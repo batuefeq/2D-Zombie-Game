@@ -6,9 +6,9 @@ public class ZombieGenerator : MonoBehaviour
 {
     public GameObject[] zombiePrefabs;
     public Zombie zombie;
-    IncrementalBehaviour incrementalBehaviour;
 
-
+    public delegate void OnZombieDeath();
+    public static event OnZombieDeath CallUIFunction;
 
     void ZombieSpawner()
     {
@@ -22,8 +22,7 @@ public class ZombieGenerator : MonoBehaviour
         {
             if (zombie.zombieDead)
             {
-                SettingScore.score += 20;
-                incrementalBehaviour.IncrementalTextSpawn();
+                CallUIFunction();
                 zombie.zombieDead = false;
                 Invoke("ZombieSpawner", Random.Range(0.5f, 3));
                 Destroy(zombie.gameObject);
@@ -40,7 +39,6 @@ public class ZombieGenerator : MonoBehaviour
     void Start()
     {
         zombie = GetComponentInChildren<Zombie>();
-        incrementalBehaviour = GetComponent<IncrementalBehaviour>();
     }
 
     

@@ -1,22 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
 public class IncrementalBehaviour : MonoBehaviour
 {
     public TextMeshProUGUI incrementText;
+    
 
 
-
-    public void IncrementalTextSpawn()
+    private void OnEnable()
     {
-        var text = Instantiate(incrementText,transform, false);
+        ZombieGenerator.CallUIFunction += IncrementalTextSpawn;
+    }
+
+
+    private void OnDisable()
+    {
+        ZombieGenerator.CallUIFunction -= IncrementalTextSpawn;
+    }
+
+
+    private void IncrementalTextSpawn()
+    { 
+        var text = Instantiate(incrementText,transform, false);             
+        AlphaDesigner(text);
     }
    
 
-    void Update()
+    private void AlphaDesigner(TextMeshProUGUI obj)
     {
-        IncrementalTextSpawn();
+        obj.CrossFadeAlpha(0, 1.2f, false);              
+        Destroy(obj.gameObject, 2);     
     }
 }

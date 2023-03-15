@@ -8,6 +8,7 @@ public class Zombie : MonoBehaviour
     bool isBulletHit;
     static float currentSpeed;
     public bool zombieDead = false;
+    HealtBarSetter healthBarSetter;
 
 
     int _health;
@@ -88,6 +89,8 @@ public class Zombie : MonoBehaviour
     void Start()
     {
         _health = zombieSettings.health;
+        
+        
     }
 
 
@@ -96,5 +99,7 @@ public class Zombie : MonoBehaviour
         Die();
         ZombieMovement();
         SpeedAdjuster();
+        healthBarSetter = GetComponent<HealtBarSetter>();
+        healthBarSetter.HealthSetter(zombieHealth);
     }
 }
