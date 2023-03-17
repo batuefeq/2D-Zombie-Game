@@ -1,9 +1,10 @@
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
+
 
 public class IncrementalBehaviour : MonoBehaviour
 {
-    public TextMeshProUGUI incrementText;
+    public Text incrementText;
     
 
 
@@ -26,7 +27,7 @@ public class IncrementalBehaviour : MonoBehaviour
     }
    
 
-    private void AlphaDesigner(TextMeshProUGUI obj)
+    private void AlphaDesigner(Text obj)
     {
         obj.CrossFadeAlpha(0, 1.2f, false);              
         Destroy(obj.gameObject, 2);     
