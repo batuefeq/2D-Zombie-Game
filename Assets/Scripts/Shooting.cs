@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
+
 public class Shooting : MonoBehaviour
 {
     int magSize;
@@ -8,6 +9,10 @@ public class Shooting : MonoBehaviour
     [System.NonSerialized]
     public bool isReloading;
    
+    public delegate void OnReload();
+    public static event OnReload onReload;
+
+
 
     void Start()
     {
@@ -19,6 +24,10 @@ public class Shooting : MonoBehaviour
     void Update()
     {
         if(magSize == 0 && !isReloading)
+        {
+            StartCoroutine("Reload");
+        }
+        else if (Input.GetKeyDown(KeyCode.R))
         {
             StartCoroutine("Reload");
         }
@@ -38,9 +47,10 @@ public class Shooting : MonoBehaviour
 
     IEnumerator Reload()
     {
+        onReload();
         isReloading = true;
         print("reload start");
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSecondsRealtime(1.9f);
         isReloading = false;
         magSize = 12;
         print("reload finish");

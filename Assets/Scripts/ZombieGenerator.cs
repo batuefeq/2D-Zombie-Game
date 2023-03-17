@@ -2,6 +2,7 @@ using UnityEngine;
 using System;
 using Random = UnityEngine.Random;
 
+
 public class ZombieGenerator : MonoBehaviour
 {
     public GameObject[] zombiePrefabs;

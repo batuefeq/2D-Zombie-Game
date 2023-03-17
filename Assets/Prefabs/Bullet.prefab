@@ -70,6 +70,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bloodPrefab: {fileID: 690938360063861436, guid: 375739c0cb7797d499d80af071ed0585, type: 3}
+  hsBloodPrefab: {fileID: 3326867971365584898, guid: 1693246635ecbab4ca853ba3339cafa0, type: 3}
   bulletDmg: 5
 --- !u!61 &6939528126282801390
 BoxCollider2D:

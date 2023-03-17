@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class HealtBarSetter : MonoBehaviour
 {
     public Slider slider;

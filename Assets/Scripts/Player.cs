@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
+
 
 public class Player : MonoBehaviour
 {
@@ -60,10 +60,10 @@ public class Player : MonoBehaviour
         if (timer >= nextTimeToFire)
         {
             if (Input.GetMouseButtonDown(0))
-            {
-                onShoot();
+            {               
                 if (!shooting.isReloading)
                 {
+                    onShoot();
                     var bul = Instantiate(playerSettings.bulletPrefab, muzzleTransform);
                     bul.GetComponent<Rigidbody2D>().AddForce(Vector2.right * playerSettings.bulletSpeed, ForceMode2D.Force);
                     timer = 0f;
@@ -95,7 +95,7 @@ public class Player : MonoBehaviour
                 isGrounded = true;
             }
         }       
-    }
+    } // ground check
 
 
     private void OnTriggerEnter2D(Collider2D collision)
