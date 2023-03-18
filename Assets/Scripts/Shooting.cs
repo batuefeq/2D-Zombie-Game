@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
-    int magSize;
+    public static int magSize;
     public PlayerSettings playerSettings;
     [System.NonSerialized]
     public bool isReloading;
