@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 
@@ -8,14 +9,26 @@ public class PistolSound : MonoBehaviour
     private AudioClip reloadClip;
     [SerializeField]
     private AudioClip[] clips;
+    [SerializeField]
+    private AudioClip stabClip;
+    [SerializeField]
+    private AudioClip swishClip;
     
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
         Player.onShoot += ShootSound;
+        Player.onStab += StabbingSound;
+        Player.onSwish += SwishSound;
         Shooting.onReload += ReloadSound;
     }
+
+    private void SwishSound()
+    {
+        audioSource.PlayOneShot(swishClip);
+    }
+
 
     void ShootSound()
     {
@@ -29,10 +42,17 @@ public class PistolSound : MonoBehaviour
         audioSource.PlayOneShot(reloadClip);
     }
 
+    void StabbingSound()
+    {
+        audioSource.PlayOneShot(stabClip);
+    }
+
+
+
+
 
     private AudioClip GetRandomClip()
     {
         return clips[UnityEngine.Random.Range(0, clips.Length)];
     }
-    
 }

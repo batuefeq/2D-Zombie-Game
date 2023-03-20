@@ -10,7 +10,8 @@ public class Player : MonoBehaviour
     Shooting shooting;
 
     public delegate void OnShoot();
-    public static event OnShoot onShoot;
+    public static event OnShoot onShoot, onStab, onSwish;
+
 
     BoxCollider2D stabCollider, stabBottomCollider;
    
@@ -102,11 +103,13 @@ public class Player : MonoBehaviour
     {
         if (collision.GetComponent<Zombie>() && isGrounded)
         {
+            onStab();
             var tempHealth = collision.GetComponent<Zombie>().zombieHealth; // fikir, stabbing ile kýrýlabilir obstaclelar ve zýplanmasý gereken obstaclelar.
             collision.GetComponent<Zombie>().zombieHealth = tempHealth;
         }
-        if (collision.GetComponent<Zombie>() && !isGrounded)
+        if (collision.GetComponent<Zombie>() && !isGrounded) // zýplama
         {
+            onStab();
             var tempHealth = collision.GetComponent<Zombie>().zombieHealth;
             collision.GetComponent<Zombie>().zombieHealth = tempHealth;
             stabbing = false;
@@ -116,6 +119,7 @@ public class Player : MonoBehaviour
 
     private void Stabbing()
     {
+        onSwish();
         if (Input.GetMouseButtonDown(1) && !stabbing)
         {           
             StartCoroutine("StabTimer");
