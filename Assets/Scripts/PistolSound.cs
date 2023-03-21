@@ -32,8 +32,10 @@ public class PistolSound : MonoBehaviour
 
     void ShootSound()
     {
+        audioSource.volume = 0.2f;
         AudioClip clip = GetRandomClip();
         audioSource.PlayOneShot(clip);
+        audioSource.volume = 0.8f;
     }
     
 
