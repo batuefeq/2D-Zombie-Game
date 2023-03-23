@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     Shooting shooting;
 
     public delegate void OnShoot();
-    public static event OnShoot onShoot, onStab, onSwish;
+    public static event OnShoot onShoot, onStab, onSwish, onJump;
 
 
     BoxCollider2D stabCollider, stabBottomCollider;
@@ -80,6 +80,7 @@ public class Player : MonoBehaviour
         {
             if (isGrounded)
             {
+                onJump();
                 rb.AddForce(Vector2.up * playerSettings.jumpForce);
                 isGrounded = false;
             }

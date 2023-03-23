@@ -8,7 +8,7 @@ public class Shooting : MonoBehaviour
     public PlayerSettings playerSettings;
     [System.NonSerialized]
     public bool isReloading;
-   
+
     public delegate void OnReload();
     public static event OnReload onReload;
 
@@ -22,11 +22,17 @@ public class Shooting : MonoBehaviour
 
     void Update()
     {
-        if(magSize == 0 && !isReloading)
+        StartReloading();
+    }
+
+
+    private void StartReloading()
+    {
+        if (magSize == 0 && !isReloading)
         {
             StartCoroutine("Reload");
         }
-        else if (Input.GetKeyDown(KeyCode.R))
+        else if (Input.GetKeyDown(KeyCode.R) && !isReloading)
         {
             StartCoroutine("Reload");
         }
@@ -35,7 +41,6 @@ public class Shooting : MonoBehaviour
 
     public void BulletCount()
     {
-        
         if (magSize > 0)
         {
             magSize--;

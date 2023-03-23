@@ -12,6 +12,8 @@ public class PistolSound : MonoBehaviour
     private AudioClip[] stabClip;
     [SerializeField]
     private AudioClip[] swishClip;
+    [SerializeField]
+    private AudioClip jumpClip;
     
 
     void Start()
@@ -20,12 +22,14 @@ public class PistolSound : MonoBehaviour
         Player.onShoot += ShootSound;
         Player.onStab += StabbingSound;
         Player.onSwish += SwishSound;
+        Player.onJump += JumpSound;
         Shooting.onReload += ReloadSound;
     }
 
 
     private void SwishSound()
     {
+        audioSource.volume = 0.7f;
         audioSource.PlayOneShot(swishClip[Random.Range(0, 1)]);
     }
 
@@ -40,12 +44,21 @@ public class PistolSound : MonoBehaviour
 
     void ReloadSound()
     {
+        audioSource.volume = 0.5f;
         audioSource.PlayOneShot(reloadClip);
+    }
+
+
+    void JumpSound()
+    {
+        audioSource.volume = 0.5f;
+        audioSource.PlayOneShot(jumpClip);
     }
 
 
     void StabbingSound()
     {
+        audioSource.volume = 0.8f;
         audioSource.PlayOneShot(stabClip[Random.Range(0,1)]);
     }
 

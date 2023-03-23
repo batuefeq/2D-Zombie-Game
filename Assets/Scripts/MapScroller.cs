@@ -17,7 +17,7 @@ public class MapScroller : MonoBehaviour
     
     private void SpeedChanger()
     {
-        transform.Translate(Vector2.left * speed * Time.deltaTime);
+        transform.Translate(speed * Time.deltaTime * Vector2.left);
         speed += incremental;
     }
 
