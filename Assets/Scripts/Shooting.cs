@@ -13,7 +13,6 @@ public class Shooting : MonoBehaviour
     public static event OnReload onReload;
 
 
-
     void Start()
     {
         magSize = playerSettings.bulletCount;

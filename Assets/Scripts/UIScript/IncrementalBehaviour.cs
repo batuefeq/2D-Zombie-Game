@@ -7,7 +7,6 @@ public class IncrementalBehaviour : MonoBehaviour
     public Text incrementText;
     
 
-
     private void OnEnable()
     {
         ZombieGenerator.CallUIFunction += IncrementalTextSpawn;

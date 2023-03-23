@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class MagSizeSetter : MonoBehaviour
 {
     private Text text;

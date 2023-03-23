@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 
@@ -24,6 +23,7 @@ public class PistolSound : MonoBehaviour
         Shooting.onReload += ReloadSound;
     }
 
+
     private void SwishSound()
     {
         audioSource.PlayOneShot(swishClip);
@@ -35,7 +35,6 @@ public class PistolSound : MonoBehaviour
         audioSource.volume = 0.2f;
         AudioClip clip = GetRandomClip();
         audioSource.PlayOneShot(clip);
-        audioSource.volume = 0.8f;
     }
     
 
@@ -44,13 +43,11 @@ public class PistolSound : MonoBehaviour
         audioSource.PlayOneShot(reloadClip);
     }
 
+
     void StabbingSound()
     {
         audioSource.PlayOneShot(stabClip);
     }
-
-
-
 
 
     private AudioClip GetRandomClip()
