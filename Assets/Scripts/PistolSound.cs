@@ -2,16 +2,16 @@ using UnityEngine;
 
 
 public class PistolSound : MonoBehaviour
-{  
+{
     private AudioSource audioSource;
     [SerializeField]
     private AudioClip reloadClip;
     [SerializeField]
     private AudioClip[] clips;
     [SerializeField]
-    private AudioClip stabClip;
+    private AudioClip[] stabClip;
     [SerializeField]
-    private AudioClip swishClip;
+    private AudioClip[] swishClip;
     
 
     void Start()
@@ -26,7 +26,7 @@ public class PistolSound : MonoBehaviour
 
     private void SwishSound()
     {
-        audioSource.PlayOneShot(swishClip);
+        audioSource.PlayOneShot(swishClip[Random.Range(0, 1)]);
     }
 
 
@@ -46,7 +46,7 @@ public class PistolSound : MonoBehaviour
 
     void StabbingSound()
     {
-        audioSource.PlayOneShot(stabClip);
+        audioSource.PlayOneShot(stabClip[Random.Range(0,1)]);
     }
 
 

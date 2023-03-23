@@ -118,10 +118,10 @@ public class Player : MonoBehaviour
 
 
     private void Stabbing()
-    {
-        onSwish();
+    {      
         if (Input.GetMouseButtonDown(1) && !stabbing)
-        {           
+        {
+            onSwish();
             StartCoroutine("StabTimer");
             StartCoroutine("ColliderTimer");
         }       
