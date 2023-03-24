@@ -2078,7 +2078,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2136531140}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.96, y: -4.16, z: -1}
+  m_LocalPosition: {x: 15.67, y: -2.91, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2290,10 +2290,6 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4286951766876233145, guid: 0eea97496c5d5e44bbe6d5a239a75c35, type: 3}
-      propertyPath: m_Constraints
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 4286951766876233147, guid: 0eea97496c5d5e44bbe6d5a239a75c35, type: 3}
       propertyPath: m_Name
       value: Zombie
@@ -2304,11 +2300,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4286951766876233150, guid: 0eea97496c5d5e44bbe6d5a239a75c35, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.16
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4286951766876233150, guid: 0eea97496c5d5e44bbe6d5a239a75c35, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.18
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4286951766876233150, guid: 0eea97496c5d5e44bbe6d5a239a75c35, type: 3}
       propertyPath: m_LocalPosition.z
