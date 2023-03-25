@@ -1,13 +1,15 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
 
 public class TutorialUI : MonoBehaviour
 {
     private Text tutorialText;
-    private float timer;
-    private bool shootBool = false;
-    private bool stabBool = false;
-    private bool jumpBool = false;
+    private int line = 0;
+    private bool isShot, isStab, isJump;
+    private bool processing = false;
+    private List<string> str = new List<string>();
     Color col;
 
 
@@ -15,6 +17,9 @@ public class TutorialUI : MonoBehaviour
     {
         tutorialText = GetComponent<Text>();
         col = tutorialText.color;
+        str.Add("Use Left Mouse Button to Shoot");
+        str.Add("Use Spacebar to jump");
+        str.Add("Use Right Mouse Button to stab");
     }
 
 
@@ -25,8 +30,6 @@ public class TutorialUI : MonoBehaviour
             col.a -= Time.deltaTime;
             tutorialText.color = col;
         }
-
-        print("fade out");
     }
 
 
@@ -40,71 +43,42 @@ public class TutorialUI : MonoBehaviour
     }
 
 
-
-    private void ShootTutorial()
-    {       
-        tutorialText.text = "Use Left Mouse Button to shoot";
-        
-    }
-
-
-    private void JumpTutorial()
-    {
-        tutorialText.text = "Use Spacebar to jump";      
-    }
-
-    
-    private void StabTutorial()
-    {
-        tutorialText.text = "Use Right Mouse Button to Stab.";
-        stabBool = true;
-    }
-
     private void TextChanger()
     {
-        timer += Time.deltaTime;
-        bool inProgress = false;
-        if (!Input.GetMouseButtonDown(0) && timer > 5f && !shootBool)
-        {
-            FadeIn();
-            ShootTutorial();
-            inProgress = true;
-        }
-        if (Input.GetMouseButtonDown(0) && !shootBool && inProgress)
-        {
-            FadeOut();
-            timer = 0f;
-            shootBool = true;
-            inProgress = false;
-        }
 
-        if (!Input.GetKeyDown(KeyCode.Space) && timer > 4f && shootBool && !jumpBool)
+        if (Input.GetMouseButtonDown(0))
         {
-            FadeIn();
-            JumpTutorial();
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                FadeOut();
-                timer = 0f;
-                jumpBool = true;
-            }
+            isShot = true;
         }
-
-        if (!Input.GetMouseButtonDown(1) && timer > 3f && jumpBool)
+        if (Input.GetKeyDown(KeyCode.Space) && !isJump)
         {
-            FadeIn();
-            StabTutorial();
-            if (Input.GetMouseButtonDown(1))
-            {
-                FadeOut();
-                timer = 0f;
-            }
+            isJump = true;
+        }
+        if (Input.GetMouseButtonDown(1) && !isStab)
+        {
+            isStab = true;
         }
     }
+
+
+    private IEnumerator TextTimerFirst()
+    {
+        tutorialText.text = str[0];
+        FadeIn();
+        processing = true;
+        // yield break
+        yield return new WaitForSecondsRealtime(25f);
+        if (isShot)
+        {
+            FadeOut();
+        }        
+    } 
+
 
 
     void Update()
     {
         TextChanger();
+        TextTimerFirst();
     }
 }
