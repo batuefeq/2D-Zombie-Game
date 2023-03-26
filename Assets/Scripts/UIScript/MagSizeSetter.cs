@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class MagSizeSetter : MonoBehaviour
 {
     private Text text;
-
+    public PlayerSettings playerSettings;
     
     void Start()
     {
@@ -15,6 +15,6 @@ public class MagSizeSetter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        text.text = Shooting.magSize + " / 12";
+        text.text = Shooting.magSize + " / " + playerSettings.magMaxSize;
     }
 }

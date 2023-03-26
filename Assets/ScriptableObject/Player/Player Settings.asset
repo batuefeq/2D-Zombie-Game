@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: Player Settings
   m_EditorClassIdentifier: 
   jumpForce: 600
-  health: 5
   baseDamage: 10
   bulletPrefab: {fileID: 6963589600379342696, guid: 13fe69d5bad4d80478974e3b42921635, type: 3}
   fireRate: 3
   bulletSpeed: 2000
-  bulletCount: 12
+  magMaxSize: 6

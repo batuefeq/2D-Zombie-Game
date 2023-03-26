@@ -8,7 +8,7 @@ public class Zombie : MonoBehaviour
     bool isBulletHit;
     static float currentSpeed;
     public bool zombieDead = false;
-
+    public static bool isPlayerContact = false;
 
     int _health;
     public int zombieHealth
@@ -26,8 +26,8 @@ public class Zombie : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.GetComponent<Player>())
-        {            
-            Destroy(collision.gameObject);
+        {
+            isPlayerContact = true;
         }      
     }
 
@@ -37,11 +37,11 @@ public class Zombie : MonoBehaviour
     {
         if (!isBulletHit)
         {
-            transform.Translate(Vector2.left * currentSpeed * Time.deltaTime);
+            transform.Translate(currentSpeed * Time.deltaTime * Vector2.left);
         }
         else
         {
-            transform.Translate(Vector2.right * zombieSettings.bulletImpactSpeed * Time.deltaTime);
+            transform.Translate(zombieSettings.bulletImpactSpeed * Time.deltaTime * Vector2.right);
         }       
     }
 

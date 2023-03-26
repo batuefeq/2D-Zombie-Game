@@ -15,7 +15,7 @@ public class Shooting : MonoBehaviour
 
     void Start()
     {
-        magSize = playerSettings.bulletCount;
+        magSize = playerSettings.magMaxSize;
         Player.onShoot += BulletCount;
     }
 
@@ -56,7 +56,7 @@ public class Shooting : MonoBehaviour
         print("reload start");
         yield return new WaitForSecondsRealtime(1.9f);
         isReloading = false;
-        magSize = 12;
+        magSize = playerSettings.magMaxSize;
         print("reload finish");
     }
 }

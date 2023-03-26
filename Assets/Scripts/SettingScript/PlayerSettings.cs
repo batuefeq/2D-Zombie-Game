@@ -10,5 +10,5 @@ public class PlayerSettings : ScriptableObject
     public GameObject bulletPrefab;
     public float fireRate;
     public float bulletSpeed;
-    public int bulletCount;
+    public int magMaxSize;
 }
