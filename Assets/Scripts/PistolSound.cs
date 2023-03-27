@@ -27,6 +27,16 @@ public class PistolSound : MonoBehaviour
     }
 
 
+    private void OnDisable()
+    {
+        Player.onShoot -= ShootSound;
+        Player.onStab -= StabbingSound;
+        Player.onSwish -= SwishSound;
+        Player.onJump -= JumpSound;
+        Shooting.onReload -= ReloadSound;
+    }
+
+
     private void SwishSound()
     {
         audioSource.volume = 0.7f;

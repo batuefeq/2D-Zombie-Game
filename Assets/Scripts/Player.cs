@@ -35,8 +35,7 @@ public class Player : MonoBehaviour
     }
 
 
- 
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         muzzleTransform = gameObject.transform.GetChild(1);
@@ -48,9 +47,13 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        Jump();
-        Shot();
-        Stabbing();
+        if(Time.timeScale != 0)
+        {
+            Jump();
+            Shot();
+            Stabbing();
+        }
+        
     }
 
 
@@ -64,7 +67,7 @@ public class Player : MonoBehaviour
             {               
                 if (!shooting.isReloading)
                 {
-                    onShoot();
+                    onShoot?.Invoke();
                     var bul = Instantiate(playerSettings.bulletPrefab, muzzleTransform);
                     bul.GetComponent<Rigidbody2D>().AddForce(Vector2.right * playerSettings.bulletSpeed, ForceMode2D.Force);
                     timer = 0f;

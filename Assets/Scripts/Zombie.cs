@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 
 public class Zombie : MonoBehaviour
@@ -10,7 +11,10 @@ public class Zombie : MonoBehaviour
     public bool zombieDead = false;
     public static bool isPlayerContact = false;
 
+
     int _health;
+
+
     public int zombieHealth
     {
         get
@@ -23,6 +27,7 @@ public class Zombie : MonoBehaviour
         }
     }
 
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.GetComponent<Player>())
@@ -30,7 +35,6 @@ public class Zombie : MonoBehaviour
             isPlayerContact = true;
         }      
     }
-
 
 
     private void ZombieMovement()
@@ -86,9 +90,20 @@ public class Zombie : MonoBehaviour
     }
 
 
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        currentSpeed = zombieSettings.minSpeed;
+    }
+
     void Start()
     {
-        _health = zombieSettings.health;         
+        _health = zombieSettings.health;  
+        
     }
 
 

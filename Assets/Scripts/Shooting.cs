@@ -13,10 +13,16 @@ public class Shooting : MonoBehaviour
     public static event OnReload onReload;
 
 
-    void Start()
+    void Awake()
     {
         magSize = playerSettings.magMaxSize;
         Player.onShoot += BulletCount;
+    }
+
+
+    private void OnDisable()
+    {
+        Player.onShoot -= BulletCount;
     }
 
 
