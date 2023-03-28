@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a5dc8512507d52843956b620b385e8f8
+guid: e19b2e5dde7131148bf7f814eddf018f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -129,7 +129,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ButtonUI_0
+      name: ButtonUI 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -143,14 +143,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b602948bc0e42d94f890bb5a65694b8e
-      internalID: -1157392706
+      spriteID: 7fe89bc074570a54cb4ab76752ef1a05
+      internalID: -644509755
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ButtonUI_1
+      name: ButtonUI 1_1
       rect:
         serializedVersion: 2
         x: 320
@@ -164,14 +164,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7c9bb18bff6252643a4d37cb32c2b056
-      internalID: -658390552
+      spriteID: 2da24062acb62c8438849f6fb543fca4
+      internalID: 1543472604
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ButtonUI_2
+      name: ButtonUI 1_2
       rect:
         serializedVersion: 2
         x: 640
@@ -185,8 +185,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ea60443c00dc3864280989a523e87425
-      internalID: 2039070110
+      spriteID: cdcbc3895ebbecd45bee5b1be4c945e1
+      internalID: 1921247054
       vertices: []
       indices: 
       edges: []
@@ -202,9 +202,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ButtonUI_1: -658390552
-      ButtonUI_0: -1157392706
-      ButtonUI_2: 2039070110
+      ButtonUI 1_2: 1921247054
+      ButtonUI 1_0: -644509755
+      ButtonUI 1_1: 1543472604
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
