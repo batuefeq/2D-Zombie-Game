@@ -8,6 +8,7 @@ public class PlayerSettings : ScriptableObject
     public float jumpForce;
     public int baseDamage;
     public GameObject bulletPrefab;
+    public GameObject muzzlePrefab;
     public float fireRate;
     public float bulletSpeed;
     public int magMaxSize;

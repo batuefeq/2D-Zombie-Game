@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -31,9 +29,7 @@ public class Bullet : MonoBehaviour
                 collision.gameObject.GetComponent<Zombie>().zombieHealth = GetComponentInParent<Player>().baseDamage;
                 blod.transform.parent = null;
                 print(collision.GetType());
-            }
-            
-            
+            }                     
             collision.gameObject.GetComponent<Zombie>().ZombiePusher();
             Destroy(gameObject);
         }

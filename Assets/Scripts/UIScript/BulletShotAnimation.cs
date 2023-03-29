@@ -9,24 +9,23 @@ public class BulletShotAnimation : MonoBehaviour
     private void Awake()
     {
         image = GetComponent<Image>();
+        Player.onShoot += RotatePhase;
+    }
+
+    private void OnDisable()
+    {
+        Player.onShoot -= RotatePhase;
     }
 
     void RotatePhase()
     {
-        
-    }
-
-
-    void Update()
-    {
-        const float duration = 2f; //Seconds it should take to finish rotating
-        float counter = 0;
-
-        image.CrossFadeAlpha(0f, 2f, true);
-        while (counter < duration)
+        float timer = 0f;
+        float waitTime = 99f;
+        while (timer < waitTime)
         {
-            counter += Time.deltaTime;
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0f, 0f, 90f), counter / duration);
-        }
+            timer += Time.deltaTime;
+            transform.Rotate(Time.deltaTime * 10f * Vector3.forward);
+            image.CrossFadeAlpha(0, 3f, true);
+        }              
     }
 }

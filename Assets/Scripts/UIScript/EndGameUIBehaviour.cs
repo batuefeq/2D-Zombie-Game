@@ -8,7 +8,7 @@ public class EndGameUIBehaviour : MonoBehaviour
     Text text;
     GameObject endGameUI;
     CanvasGroup cg;
-
+    public static bool gamePaused;
 
     private void Awake()
     {
@@ -30,7 +30,7 @@ public class EndGameUIBehaviour : MonoBehaviour
     {       
         if(cg.alpha < 1)
         {
-            cg.alpha += 0.001f;
+            cg.alpha += 0.008f;
         }
     }
 
@@ -39,8 +39,9 @@ public class EndGameUIBehaviour : MonoBehaviour
     {
         if (Zombie.isPlayerContact)
         {
-            Time.timeScale = 0;
+            Time.timeScale = 0.0001f;
             endGameUI.SetActive(true);
+            gamePaused = true;
             StartCoroutine(Prolonger());
         }
     }
@@ -51,6 +52,7 @@ public class EndGameUIBehaviour : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Zombie.isPlayerContact = false;
         Time.timeScale = 1;
+        gamePaused = false;
     }
 
 
