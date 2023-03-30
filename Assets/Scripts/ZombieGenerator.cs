@@ -47,7 +47,7 @@ public class ZombieGenerator : MonoBehaviour
     {
         try
         {
-            zombie = GetComponentInChildren<Zombie>();
+            zombie = GetComponentInChildren<Zombie>(); // could use trygetcomponent
         }
         catch (Exception)
         {
