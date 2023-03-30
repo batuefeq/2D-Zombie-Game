@@ -19,7 +19,7 @@ public class TutorialUI : MonoBehaviour
         str.Add("Use Left Mouse Button to Shoot");
         str.Add("Use Spacebar to jump");
         str.Add("Use Right Mouse Button to stab");
-        str.Add("Use Jump Stab to reset stab timer");
+        str.Add("Use R to reload");
     }
 
 
@@ -61,7 +61,7 @@ public class TutorialUI : MonoBehaviour
         {
             isStab = true;
         }
-        if(Input.GetMouseButtonDown(1) && Input.GetKeyDown(KeyCode.Space)) isJumpStab = true;
+        if(Input.GetKeyDown(KeyCode.R)) isJumpStab = true;
 
 
         if (!processing)

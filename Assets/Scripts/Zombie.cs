@@ -60,19 +60,22 @@ public class Zombie : MonoBehaviour
 
 
     private void SpeedAdjuster()
-    {       
-        if(currentSpeed >= zombieSettings.maxSpeed)
+    {
+        if (!zombieDead)
         {
-            currentSpeed = zombieSettings.maxSpeed;
-        }
-        else if (currentSpeed == 0)
-        {
-            currentSpeed = zombieSettings.minSpeed;
-        }
-        else if (currentSpeed < zombieSettings.maxSpeed)
-        {
-            currentSpeed += zombieSettings.incrementSpeed;
-        }        
+            if (currentSpeed >= zombieSettings.maxSpeed)
+            {
+                currentSpeed = zombieSettings.maxSpeed;
+            }
+            else if (currentSpeed == 0)
+            {
+                currentSpeed = zombieSettings.minSpeed;
+            }
+            else if (currentSpeed < zombieSettings.maxSpeed)
+            {
+                currentSpeed += zombieSettings.incrementSpeed;
+            }
+        }           
     }
 
 
