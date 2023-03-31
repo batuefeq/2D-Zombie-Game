@@ -5,16 +5,19 @@ using System.Collections;
 
 public class EndGameUIBehaviour : MonoBehaviour
 {
-    Text text;
     GameObject endGameUI;
     CanvasGroup cg;
     public static bool gamePaused;
+    private int highScore;
+    private Text text;
 
     private void Awake()
     {
         endGameUI = gameObject.transform.GetChild(3).gameObject;
         endGameUI.SetActive(false);
         cg = endGameUI.GetComponent<CanvasGroup>();
+        text = endGameUI.transform.GetChild(0).GetChild(1).GetComponent<Text>();
+        text.text = PlayerPrefs.GetInt("HighScore").ToString();
         cg.alpha = 0;  
     }
 
@@ -42,10 +45,25 @@ public class EndGameUIBehaviour : MonoBehaviour
             Time.timeScale = 0.0001f;
             endGameUI.SetActive(true);
             gamePaused = true;
+            HighScoreSetter();
             StartCoroutine(Prolonger());
         }
     }
 
+
+    private void HighScoreSetter()
+    {
+        if (SettingScore.score > highScore)
+        {
+            highScore = SettingScore.score;
+            PlayerPrefs.SetInt("HighScore", highScore);
+            text.text = SettingScore.score.ToString();
+        } 
+        else if (SettingScore.score <= highScore)
+        {
+            text.text = PlayerPrefs.GetInt("HighScore").ToString();
+        }
+    }
 
     public void RestartGame()
     {
@@ -53,6 +71,7 @@ public class EndGameUIBehaviour : MonoBehaviour
         Zombie.isPlayerContact = false;
         Time.timeScale = 1;
         gamePaused = false;
+        SettingScore.score = 0;
     }
 
 

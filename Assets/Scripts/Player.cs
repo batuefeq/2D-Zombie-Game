@@ -69,7 +69,7 @@ public class Player : MonoBehaviour
                 {
                     onShoot?.Invoke();
                     var bul = Instantiate(playerSettings.bulletPrefab, muzzleTransform);
-                    var muzzle = Instantiate(playerSettings.muzzlePrefab, muzzleTransform);
+                    Instantiate(playerSettings.muzzlePrefab, muzzleTransform);
                     bul.GetComponent<Rigidbody2D>().AddForce(Vector2.right * playerSettings.bulletSpeed, ForceMode2D.Force);
                     timer = 0f;
                 }               

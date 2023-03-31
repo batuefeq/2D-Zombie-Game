@@ -25,6 +25,6 @@ public class SettingScore : MonoBehaviour
     private void SettingText()
     {
          score += 20;
-         scoreText.text = score.ToString();      
+         scoreText.text = score.ToString();
     }
 }
