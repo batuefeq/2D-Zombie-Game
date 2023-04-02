@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSettings: {fileID: 11400000, guid: b14273009026ea2428ecb4a86d844cdf, type: 2}
+  isGrounded: 0
 --- !u!114 &6216469192057135703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,6 +238,7 @@ GameObject:
   - component: {fileID: 1160325660514090341}
   - component: {fileID: 8653160598052776568}
   - component: {fileID: 6054662707046473152}
+  - component: {fileID: 6843600157090574486}
   m_Layer: 0
   m_Name: PlayerBody
   m_TagString: Untagged
@@ -331,6 +333,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &6843600157090574486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160325660514090338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d537bb86846922c41aebb0f344d3807a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2518359473827423550
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,12 +13,13 @@ public class Player : MonoBehaviour
     public static event OnShoot onShoot, onStab, onSwish, onJump;
 
 
-    BoxCollider2D stabCollider, stabBottomCollider;
+    public BoxCollider2D stabCollider, stabBottomCollider;
    
     float timer = 0f;
 
     Transform muzzleTransform;
-    bool isGrounded, stabbing;
+    public bool isGrounded;
+    bool stabbing;
     
 
     int _damage;
