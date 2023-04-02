@@ -4,6 +4,8 @@ public class Bullet : MonoBehaviour
 {
     public GameObject bloodPrefab;
     public GameObject hsBloodPrefab;
+    public delegate void ZombieHit();
+    public static event ZombieHit ZombieImpact, ZombieHeadImpact;
     public int bulletDmg = 5;
 
 
@@ -19,16 +21,17 @@ public class Bullet : MonoBehaviour
         {
             if(collision.collider.GetType() == typeof(CircleCollider2D)) // headshot
             {
+                ZombieHeadImpact?.Invoke();
                 var hsBlod = Instantiate(hsBloodPrefab, transform);
                 collision.gameObject.GetComponent<Zombie>().zombieHealth = GetComponentInParent<Player>().baseDamage * 2;
-                hsBlod.transform.parent = null;
+                hsBlod.transform.parent = null;             
             }
             else //other shots.
             {
+                ZombieImpact?.Invoke();
                 var blod = Instantiate(bloodPrefab, transform);
                 collision.gameObject.GetComponent<Zombie>().zombieHealth = GetComponentInParent<Player>().baseDamage;
-                blod.transform.parent = null;
-                print(collision.GetType());
+                blod.transform.parent = null;             
             }                     
             collision.gameObject.GetComponent<Zombie>().ZombiePusher();
             Destroy(gameObject);
