@@ -55,6 +55,7 @@ public class Zombie : MonoBehaviour
         if (zombieHealth <= 0)
         {
             zombieDead = true;
+            gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
         }
     }
 

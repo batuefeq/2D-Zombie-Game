@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     Shooting shooting;
 
     public delegate void OnShoot();
-    public static event OnShoot onShoot, onStab, onSwish, onJump;
+    public static event OnShoot onShoot, onStab, onSwish, onJump, onJumpKill;
 
 
     public BoxCollider2D stabCollider, stabBottomCollider;
@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
 
     Transform muzzleTransform;
     public bool isGrounded;
-    bool stabbing;
+    public bool stabbing;
     
 
     int _damage;
@@ -53,8 +53,7 @@ public class Player : MonoBehaviour
             Jump();
             Shot();
             Stabbing();
-        }
-        
+        }    
     }
 
 
@@ -115,10 +114,12 @@ public class Player : MonoBehaviour
         }
         if (collision.GetComponent<Zombie>() && !isGrounded) // zýplama
         {
+            StopCoroutine("StabTimer");
             onStab();
+            onJumpKill();
             var tempHealth = collision.GetComponent<Zombie>().zombieHealth;
             collision.GetComponent<Zombie>().zombieHealth = tempHealth;
-            stabbing = false;
+            stabbing = false;         
         }
     }
 
@@ -127,9 +128,10 @@ public class Player : MonoBehaviour
     {      
         if (Input.GetMouseButtonDown(1) && !stabbing)
         {
-            onSwish();
+            stabbing = true;
+            onSwish();           
             StartCoroutine("StabTimer");
-            StartCoroutine("ColliderTimer");
+            StartCoroutine(ColliderTimer());
         }       
     }
     
@@ -139,22 +141,21 @@ public class Player : MonoBehaviour
         if (isGrounded)
         {
             stabCollider.enabled = true;
-            yield return new WaitForSecondsRealtime(0.5f);
+            yield return new WaitForSecondsRealtime(playerSettings.stabTime);
             stabCollider.enabled = false;
         }
         else if (!isGrounded)
         {
             stabBottomCollider.enabled = true;
-            yield return new WaitForSecondsRealtime(0.05f);
+            yield return new WaitForSecondsRealtime(playerSettings.airStabTime);
             stabBottomCollider.enabled = false;
         }       
     }
 
    
     IEnumerator StabTimer()
-    {
-        stabbing = true;       
-        yield return new WaitForSecondsRealtime(3f);
+    {   
+        yield return new WaitForSecondsRealtime(playerSettings.stabRate);
         stabbing = false;
     }
 }

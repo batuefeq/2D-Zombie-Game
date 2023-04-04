@@ -42,7 +42,7 @@ public class EndGameUIBehaviour : MonoBehaviour
     {
         if (Zombie.isPlayerContact)
         {
-            Time.timeScale = 0.0001f;
+            Time.timeScale = 0.0000001f;
             endGameUI.SetActive(true);
             gamePaused = true;
             HighScoreSetter();

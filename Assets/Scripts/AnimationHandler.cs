@@ -59,13 +59,19 @@ public class AnimationHandler : MonoBehaviour
             anim.SetBool("isGrounded", false);
         }
 
-        if (player.stabCollider.isActiveAndEnabled)
+        if (player.stabCollider.isActiveAndEnabled || player.stabBottomCollider.isActiveAndEnabled)
         {
             anim.SetBool("isStabbing", true);
+            if (player.stabBottomCollider.isActiveAndEnabled)
+            {
+                anim.speed = 5f;
+            }         
         }
+        
         else
         {
             anim.SetBool("isStabbing", false);
+            anim.speed = 1f;
         }
     }
 
