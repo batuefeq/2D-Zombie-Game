@@ -4,9 +4,9 @@ public class ZombieSound : MonoBehaviour
 {
     private AudioSource audioSource;
     [SerializeField]
-    private AudioClip hsClip; 
+    private AudioClip hsClip;
     [SerializeField]
-    private AudioClip[] bodyClip; 
+    private AudioClip[] bodyClip;
 
 
     private void Awake()
@@ -27,13 +27,13 @@ public class ZombieSound : MonoBehaviour
     private void HsClip()
     {
         audioSource.volume = 0.6f;
-        audioSource.PlayOneShot(hsClip);
+        AudioSource.PlayClipAtPoint(hsClip, gameObject.transform.position);
     }
 
 
     private void BodyClip()
     {
         audioSource.volume = 0.6f;
-        AudioSource.PlayClipAtPoint((bodyClip[Random.Range(0, 2)]), this.gameObject.transform.position);
+        AudioSource.PlayClipAtPoint((bodyClip[Random.Range(0, 2)]), gameObject.transform.position);
     }
 }

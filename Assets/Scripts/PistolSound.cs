@@ -43,7 +43,7 @@ public class PistolSound : MonoBehaviour
         audioSource.PlayOneShot(swishClip[Random.Range(0, 2)]);
     }
 
-
+    
     void ShootSound()
     {
         audioSource.volume = 0.2f;
