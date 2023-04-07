@@ -5,8 +5,8 @@ using System.Collections;
 
 public class EndGameUIBehaviour : MonoBehaviour
 {
-    GameObject endGameUI;
-    CanvasGroup cg;
+    private GameObject endGameUI;
+    private CanvasGroup cg;
     public static bool gamePaused;
     private int highScore;
     private Text text;

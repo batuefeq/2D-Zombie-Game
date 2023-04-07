@@ -11,7 +11,7 @@ public class EventBasedSound : MonoBehaviour
 
     void Awake()
     {
-        audioSource = GetComponentInParent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Step()

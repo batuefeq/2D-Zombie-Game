@@ -35,10 +35,8 @@ public class SliderHandle : MonoBehaviour
 
 
     private void Handling()
-    {
-        print("starte0d");            
-        StartCoroutine("Enumerator");          
-                
+    {        
+        StartCoroutine("Enumerator");                       
     }
 
     private void JumpKillWatcher()

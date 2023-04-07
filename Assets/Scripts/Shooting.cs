@@ -50,7 +50,6 @@ public class Shooting : MonoBehaviour
         if (magSize > 0)
         {
             magSize--;
-            print(magSize);
         }
     }
 
