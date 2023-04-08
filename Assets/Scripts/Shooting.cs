@@ -59,7 +59,7 @@ public class Shooting : MonoBehaviour
         onReload();
         isReloading = true;
         print("reload start");
-        yield return new WaitForSecondsRealtime(1.9f);
+        yield return new WaitForSeconds(1.9f);
         isReloading = false;
         magSize = playerSettings.magMaxSize;
         print("reload finish");

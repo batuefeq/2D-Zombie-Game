@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class EndGameUIBehaviour : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class EndGameUIBehaviour : MonoBehaviour
     public static bool gamePaused;
     private int highScore;
     private Text text;
+    private AudioSource[] auSources;
+
+
 
     private void Awake()
     {
@@ -20,6 +24,16 @@ public class EndGameUIBehaviour : MonoBehaviour
         text.text = PlayerPrefs.GetInt("HighScore").ToString();
         cg.alpha = 0;  
     }
+
+
+    private void AudioSourceGetter()
+    {
+        if (auSources.Length == 0)
+        {
+            auSources = FindObjectsOfType<AudioSource>();           
+        }
+    }
+
 
 
     IEnumerator Prolonger()
@@ -42,7 +56,6 @@ public class EndGameUIBehaviour : MonoBehaviour
     {
         if (Zombie.isPlayerContact)
         {
-            Time.timeScale = 0.0000001f;
             endGameUI.SetActive(true);
             gamePaused = true;
             HighScoreSetter();
@@ -65,11 +78,17 @@ public class EndGameUIBehaviour : MonoBehaviour
         }
     }
 
+
+    private void GamePauseWatcher()
+    {
+        Time.timeScale = (gamePaused == true) ? 0.0000001f : 1; 
+    }
+
+
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Zombie.isPlayerContact = false;
-        Time.timeScale = 1;
         gamePaused = false;
         SettingScore.score = 0;
     }
@@ -83,6 +102,7 @@ public class EndGameUIBehaviour : MonoBehaviour
 
     void Update()
     {
+        GamePauseWatcher();
         EndGameUICaller();
     }
 }

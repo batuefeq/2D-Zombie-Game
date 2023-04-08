@@ -141,13 +141,13 @@ public class Player : MonoBehaviour
         if (isGrounded)
         {
             stabCollider.enabled = true;
-            yield return new WaitForSecondsRealtime(playerSettings.stabTime);
+            yield return new WaitForSeconds(playerSettings.stabTime);
             stabCollider.enabled = false;
         }
         else if (!isGrounded)
         {
             stabBottomCollider.enabled = true;
-            yield return new WaitForSecondsRealtime(playerSettings.airStabTime);
+            yield return new WaitForSeconds(playerSettings.airStabTime);
             stabBottomCollider.enabled = false;
         }       
     }
@@ -155,7 +155,7 @@ public class Player : MonoBehaviour
    
     IEnumerator StabTimer()
     {   
-        yield return new WaitForSecondsRealtime(playerSettings.stabRate);
+        yield return new WaitForSeconds(playerSettings.stabRate);
         stabbing = false;
     }
 }

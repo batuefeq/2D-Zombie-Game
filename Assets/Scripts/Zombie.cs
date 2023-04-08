@@ -89,7 +89,7 @@ public class Zombie : MonoBehaviour
 
     IEnumerator zombiePushTimer()
     {
-        yield return new WaitForSecondsRealtime(0.1f);
+        yield return new WaitForSeconds(0.2f);
         isBulletHit = false;
     }
 
