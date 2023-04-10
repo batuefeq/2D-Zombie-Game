@@ -9,7 +9,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - Ground
@@ -39,9 +39,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: InvisibleGround
+    uniqueID: 527450093
+    locked: 0
+  - name: Behind
+    uniqueID: 73137645
+    locked: 0
+  - name: CloseRangeBehind
+    uniqueID: 3443410905
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: behind
-    uniqueID: 73137645
+  - name: Character
+    uniqueID: 3957388177
     locked: 0

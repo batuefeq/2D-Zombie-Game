@@ -6,7 +6,6 @@ public class Menu : MonoBehaviour
     private GameObject pauseMenu;
 
 
-
     private void GamePauser()
     {
         if (Zombie.isPlayerContact) return;
@@ -32,8 +31,12 @@ public class Menu : MonoBehaviour
     }
 
 
+   
+
     void Update()
     {
+        
+
         GamePauser();
     }
 }

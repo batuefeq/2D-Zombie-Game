@@ -11,7 +11,7 @@ public class EndGameUIBehaviour : MonoBehaviour
     public static bool gamePaused;
     private int highScore;
     private Text text;
-    private AudioSource[] auSources;
+   
 
 
 
@@ -26,14 +26,7 @@ public class EndGameUIBehaviour : MonoBehaviour
     }
 
 
-    private void AudioSourceGetter()
-    {
-        if (auSources.Length == 0)
-        {
-            auSources = FindObjectsOfType<AudioSource>();           
-        }
-    }
-
+   
 
 
     IEnumerator Prolonger()
@@ -71,6 +64,7 @@ public class EndGameUIBehaviour : MonoBehaviour
             highScore = SettingScore.score;
             PlayerPrefs.SetInt("HighScore", highScore);
             text.text = SettingScore.score.ToString();
+            PlayerPrefs.Save();
         } 
         else if (SettingScore.score <= highScore)
         {

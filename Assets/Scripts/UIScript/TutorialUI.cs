@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class TutorialUI : MonoBehaviour
 {
     private Text tutorialText;
-    private bool isShot, isStab, isJump, isFading, isJumpStab;
+    private bool isShot, isStab, isJump, isFading, isReload;
     private bool processing = false;
     private readonly List<string> str = new();
     Color col;
@@ -20,6 +20,12 @@ public class TutorialUI : MonoBehaviour
         str.Add("Use Spacebar to jump");
         str.Add("Use Right Mouse Button to stab");
         str.Add("Use R to reload");
+    }
+
+
+    private void Awake()
+    {
+        SaveLoader();
     }
 
 
@@ -47,34 +53,46 @@ public class TutorialUI : MonoBehaviour
     }
 
 
+
+    private void TutorialSaver()
+    {
+        if (isShot) PlayerPrefs.SetInt("isShot", 1);
+        if (isStab) PlayerPrefs.SetInt("isStab", 1);
+        if (isJump) PlayerPrefs.SetInt("isJump", 1);
+        if (isReload) PlayerPrefs.SetInt("isReload", 1);
+        PlayerPrefs.Save();
+    }
+
+
+    private void SaveLoader()
+    {
+        if (PlayerPrefs.GetInt("isShot") == 1) isShot = true;
+        if (PlayerPrefs.GetInt("isStab") == 1) isStab = true;
+        if (PlayerPrefs.GetInt("isJump") == 1) isJump = true;
+        if (PlayerPrefs.GetInt("isReload") == 1) isReload = true;
+       
+    }
+
+
     private void TextChanger()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            isShot = true;
-        }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            isJump = true;
-        }
-        if (Input.GetMouseButtonDown(1))
-        {
-            isStab = true;
-        }
-        if(Input.GetKeyDown(KeyCode.R)) isJumpStab = true;
-
+        if (Input.GetMouseButtonDown(0)) isShot = true;
+        if (Input.GetKeyDown(KeyCode.Space)) isJump = true;
+        if (Input.GetMouseButtonDown(1)) isStab = true;
+        if (Input.GetKeyDown(KeyCode.R)) isReload = true;
 
         if (!processing)
         {
             if (!isShot) StartCoroutine(TextShowTime());
             else if (!isJump) StartCoroutine(TextShowTime());
             else if (!isStab) StartCoroutine(TextShowTime());
-            else if (!isJumpStab) StartCoroutine(TextShowTime());                                  
+            else if (!isReload) StartCoroutine(TextShowTime());                                  
         }       
         if (isShot)
         {
             StartCoroutine(TextTimerFirst());
         }
+        TutorialSaver();
     }
 
 
@@ -83,13 +101,14 @@ public class TutorialUI : MonoBehaviour
         if (tutorialText.text == str[0] && isShot) FadeOut();
         else if (tutorialText.text == str[1] && isJump) FadeOut();
         else if (tutorialText.text == str[2] && isStab) FadeOut();
-        else if (tutorialText.text == str[3] && isJumpStab) FadeOut();
+        else if (tutorialText.text == str[3] && isReload) FadeOut();
         else yield break;
 
         yield return new WaitForSecondsRealtime(2f);
 
         processing = false;
     } 
+
 
     private IEnumerator TextShowTime()
     {
@@ -98,7 +117,7 @@ public class TutorialUI : MonoBehaviour
             if (!isShot) tutorialText.text = str[0];
             else if (!isJump) tutorialText.text = str[1];
             else if (!isStab) tutorialText.text = str[2];                                      
-            else if (!isJumpStab) tutorialText.text = str[3];
+            else if (!isReload) tutorialText.text = str[3];
         }
         FadeIn();
         yield return new WaitForSecondsRealtime(2f);
@@ -106,7 +125,7 @@ public class TutorialUI : MonoBehaviour
     }
 
 
-    void Update()
+    private void Update()
     {
         TextChanger();
     }

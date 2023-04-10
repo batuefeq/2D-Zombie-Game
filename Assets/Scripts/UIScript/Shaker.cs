@@ -11,7 +11,7 @@ public class Shaker : MonoBehaviour
         float elapsed = 0.0f;
         while (elapsed < duration)
         {
-            if (Zombie.isPlayerContact)
+            if (Zombie.isPlayerContact || EndGameUIBehaviour.gamePaused)
             {
                 break;
             }
