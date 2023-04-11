@@ -4,6 +4,8 @@ public class Menu : MonoBehaviour
 {
     [SerializeField]
     private GameObject pauseMenu;
+    [SerializeField]
+    private GameObject optionsMenu;
 
 
     private void GamePauser()
@@ -31,12 +33,21 @@ public class Menu : MonoBehaviour
     }
 
 
+    public void OptionsOpener()
+    {
+        optionsMenu.SetActive(true);
+    }
+
+    
+    public void OptionsCloser()
+    {
+        optionsMenu.SetActive(false);
+    }
+
    
 
     void Update()
-    {
-        
-
+    {     
         GamePauser();
     }
 }

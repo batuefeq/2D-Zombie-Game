@@ -26,9 +26,6 @@ public class EndGameUIBehaviour : MonoBehaviour
     }
 
 
-   
-
-
     IEnumerator Prolonger()
     {      
         yield return new WaitForSecondsRealtime(0.36f);
