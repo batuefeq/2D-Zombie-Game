@@ -5,36 +5,49 @@ using UnityEngine;
 
 public class MapScroller : MonoBehaviour
 {
-    float speed;
-    float incremental;
+    float firstLayerSpeed, secondLayerSpeed;
+    [SerializeField]
+    private GameObject firstLayer, secondLayer;
 
-    void Start()
+    void Awake()
     {
-        speed = 0.01f;
-        incremental = 0.0005f;
+        firstLayerSpeed = 2f;
+        secondLayerSpeed = 1f;
     }
 
-    
-    private void SpeedChanger()
+   
+    private void SecondLayerMover()
     {
-        transform.Translate(speed * Time.deltaTime * Vector2.left);
-        speed += incremental;
+        secondLayer.transform.Translate(secondLayerSpeed * Time.deltaTime * Vector2.left);
     }
+
+
+    private void FirstLayerMover()
+    {
+        firstLayer.transform.Translate(firstLayerSpeed * Time.deltaTime * Vector2.left);
+    }
+   
 
 
     private void MapPositionReset()
     {
-        if(transform.position.x <= -8)
+        FirstLayerMover();
+        SecondLayerMover();
+
+        if (firstLayer.transform.position.x <= -32)
         {
-            transform.position = Vector2.zero;
+            firstLayer.transform.position = new Vector2(0, firstLayer.transform.position.y);
+        }       
+        if (secondLayer.transform.position.x <= -32)
+        {
+            secondLayer.transform.position = new Vector2(0, secondLayer.transform.position.y);
         }
-        
     }
 
 
     void Update()
     {
-        SpeedChanger();
+        
         MapPositionReset();
     }
 }

@@ -19,9 +19,8 @@ public class MoveBackground : MonoBehaviour
 
 
 
-		if (x <= PontoDeDestino){
-
-			Debug.Log ("hhhh");
+		if (x <= PontoDeDestino)
+		{
 			x = PontoOriginal;
 			transform.position = new Vector3 (x, transform.position.y, transform.position.z);
 		}

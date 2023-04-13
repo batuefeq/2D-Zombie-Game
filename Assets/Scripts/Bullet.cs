@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Bullet : MonoBehaviour
 {
@@ -9,9 +10,17 @@ public class Bullet : MonoBehaviour
     public int bulletDmg = 5;
 
 
-    private void Start()
+    private void Awake()
     {
         GetComponentInParent<Player>().baseDamage = bulletDmg;
+        StartCoroutine(BulletKiller());
+    }
+
+
+    private IEnumerator BulletKiller()
+    {
+        yield return new WaitForSeconds(3f);
+        Destroy(gameObject);
     }
 
 
