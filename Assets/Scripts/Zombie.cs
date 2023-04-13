@@ -62,7 +62,7 @@ public class Zombie : MonoBehaviour
 
     private void SpeedAdjuster()
     {
-        if (!zombieDead)
+        if (!zombieDead && !EndGameUIBehaviour.gamePaused)
         {
             if (currentSpeed >= zombieSettings.maxSpeed)
             {
