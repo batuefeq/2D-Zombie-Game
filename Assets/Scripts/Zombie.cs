@@ -10,7 +10,7 @@ public class Zombie : MonoBehaviour
     static float currentSpeed;
     public bool zombieDead = false;
     public static bool isPlayerContact = false;
-
+    
 
     int _health;
 
@@ -56,9 +56,12 @@ public class Zombie : MonoBehaviour
         {
             zombieDead = true;
             gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
+            gameObject.GetComponent<CircleCollider2D>().enabled = false;
         }
     }
 
+
+    
 
     private void SpeedAdjuster()
     {

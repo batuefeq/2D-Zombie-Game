@@ -787,6 +787,9 @@ MonoBehaviour:
   bodyClip:
   - {fileID: 8300000, guid: 87f2a786af2f8c944951c101ad2dd499, type: 3}
   - {fileID: 8300000, guid: 0352a321ba20c6d49ad248d0b488381c, type: 3}
+  zombieClip:
+  - {fileID: 8300000, guid: eae73337244ac14429de6d19bdcdae36, type: 3}
+  - {fileID: 8300000, guid: 0d3a0f2f679d6a0438f852cad2891abe, type: 3}
 --- !u!1 &7315742280562602591
 GameObject:
   m_ObjectHideFlags: 0

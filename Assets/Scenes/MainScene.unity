@@ -1525,7 +1525,7 @@ MonoBehaviour:
   m_ComponentVersion: 1
   m_LightType: 3
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0
+  m_FalloffIntensity: 0.409
   m_Color: {r: 0.7019608, g: 0.09019608, b: 0.14117648, a: 1}
   m_Intensity: 0.7
   m_LightVolumeIntensity: 1
@@ -13956,6 +13956,7 @@ MonoBehaviour:
   - {fileID: 4286951766876233147, guid: 0eea97496c5d5e44bbe6d5a239a75c35, type: 3}
   - {fileID: 4286951766876233147, guid: 0eea97496c5d5e44bbe6d5a239a75c35, type: 3}
   zombie: {fileID: 0}
+  dieBody: {fileID: 8046650359187673588, guid: 46602ee334ae2ea4b9ab1189732d2ab1, type: 3}
 --- !u!1 &2146018120
 GameObject:
   m_ObjectHideFlags: 0
@@ -14341,15 +14342,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4286951766876233150, guid: 0eea97496c5d5e44bbe6d5a239a75c35, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4286951766876233150, guid: 0eea97496c5d5e44bbe6d5a239a75c35, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4286951766876233150, guid: 0eea97496c5d5e44bbe6d5a239a75c35, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4286951766876233150, guid: 0eea97496c5d5e44bbe6d5a239a75c35, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -14715,6 +14716,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1140430679}
+    - target: {fileID: 7264428876317503399, guid: 0eea97496c5d5e44bbe6d5a239a75c35, type: 3}
+      propertyPath: dieBody
+      value: 
+      objectReference: {fileID: 8046650359187673588, guid: 46602ee334ae2ea4b9ab1189732d2ab1, type: 3}
     - target: {fileID: 7284753482735646300, guid: 0eea97496c5d5e44bbe6d5a239a75c35, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
