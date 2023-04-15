@@ -43,7 +43,7 @@ public class ZombieGenerator : MonoBehaviour
 
     private void DieRoutuine()
     {
-        var body = Instantiate(dieBody, zombie.gameObject.transform);
+        GameObject body = Instantiate(dieBody, zombie.gameObject.transform);
         body.transform.parent = gameObject.transform;
         int temp = Random.Range(0, 2);
         if (temp == 1)
@@ -66,13 +66,15 @@ public class ZombieGenerator : MonoBehaviour
     private IEnumerator BodyFade(GameObject tempBody)
     {
         print("inside");
-        SpriteRenderer temp = tempBody.GetComponent<SpriteRenderer>();
         var tempvalue = 255f;
         while (tempvalue > 0)
         {
             print("inside while");
-            tempvalue -= 0.01f;
-            tempBody.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, tempvalue);
+            tempvalue -= 1f;
+            Color tempColor = new Color(0, 0, 0, tempvalue);
+            tempBody.GetComponent<SpriteRenderer>().color = tempColor;
+            print(tempBody.GetComponent<SpriteRenderer>().color);
+            tempBody.transform.SetPositionAndRotation(transform.position, transform.rotation);
             yield return null;
         }
 
