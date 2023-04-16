@@ -8,6 +8,9 @@ public class ZombieSound : MonoBehaviour
     private AudioClip hsClip;
     [SerializeField]
     private AudioClip[] bodyClip, zombieClip;
+    [SerializeField]
+    private AudioClip finishClip;
+    private int temp = 0;
 
 
     private void Awake()
@@ -27,7 +30,7 @@ public class ZombieSound : MonoBehaviour
 
     private void HsClip()
     {
-        audioSource.volume = 0.6f;
+        audioSource.volume = 0.4f;
         NewMethod();
     }
 
@@ -39,8 +42,27 @@ public class ZombieSound : MonoBehaviour
         if (random == 1)
         {
             audioSource.PlayOneShot(zombieClip[Random.Range(0, 2)]);
+        }       
+    }
+
+
+    private void EndGameSound()
+    {
+        if (Zombie.isPlayerContact == true && temp == 0)
+        {
+            audioSource.volume = 0.5f;
+            audioSource.PlayOneShot(finishClip);
+            temp++;
         }
-        
+        else if (Zombie.isPlayerContact == false)
+        {
+            temp = 0;
+        }
+    }
+
+    private void Update()
+    {
+        EndGameSound();
     }
 
 
@@ -51,7 +73,7 @@ public class ZombieSound : MonoBehaviour
         {
             audioSource.PlayOneShot(zombieClip[Random.Range(0, 2)]);
         }
-        audioSource.volume = 0.6f;
+        audioSource.volume = 0.4f;
         audioSource.PlayOneShot(bodyClip[Random.Range(0, 2)]);
     }
 }

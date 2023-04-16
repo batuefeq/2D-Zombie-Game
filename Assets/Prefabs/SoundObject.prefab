@@ -45,7 +45,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 2795315823720570421, guid: 64cabf4f33e0f4e4789a7f98b95fe71c, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.667
+  m_Volume: 0.025
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -148,3 +148,4 @@ MonoBehaviour:
   zombieClip:
   - {fileID: 8300000, guid: c4dd2ed41e5a7ba43af528b2c390b958, type: 3}
   - {fileID: 8300000, guid: d850c06071be7a44f8ff8b3ec4a0eda1, type: 3}
+  finishClip: {fileID: 8300000, guid: 6087580b08bfd624aa1ba8e3c996eeb1, type: 3}

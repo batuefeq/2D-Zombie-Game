@@ -79,8 +79,11 @@ public class PistolSound : MonoBehaviour
     }
 
 
+   
+
     private void Update()
     {
+        
         if (EndGameUIBehaviour.gamePaused)
         {
             audioSource.Pause();
@@ -88,7 +91,7 @@ public class PistolSound : MonoBehaviour
         else
         {
             audioSource.UnPause();
-        }
+        }       
     }
 
 }

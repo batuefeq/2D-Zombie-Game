@@ -76,6 +76,21 @@ public class EndGameUIBehaviour : MonoBehaviour
     }
 
 
+    private void MouseHider()
+    {
+        if (SceneManager.GetActiveScene().name == "MainScene" && gamePaused == false)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+        else
+        {           
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+        }
+    }
+
+
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -95,5 +110,6 @@ public class EndGameUIBehaviour : MonoBehaviour
     {
         GamePauseWatcher();
         EndGameUICaller();
+        MouseHider();
     }
 }

@@ -134,6 +134,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9c22eea25e7875348832fdeeff708cd1, type: 3}
   - {fileID: 8300000, guid: 811d36b4845c63a42a32f3e13ab3a5d9, type: 3}
   jumpClip: {fileID: 8300000, guid: d0d663351f9997044ac09017a47d1e8b, type: 3}
+  finishClip: {fileID: 8300000, guid: 6087580b08bfd624aa1ba8e3c996eeb1, type: 3}
 --- !u!82 &8420446300575666088
 AudioSource:
   m_ObjectHideFlags: 0
