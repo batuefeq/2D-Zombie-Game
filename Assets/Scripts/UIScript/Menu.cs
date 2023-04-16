@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
@@ -6,6 +7,8 @@ public class Menu : MonoBehaviour
     private GameObject pauseMenu;
     [SerializeField]
     private GameObject optionsMenu;
+    [SerializeField]
+    private GameObject creditsMenu;
 
 
     private void GamePauser()
@@ -44,7 +47,31 @@ public class Menu : MonoBehaviour
         optionsMenu.SetActive(false);
     }
 
+
+    public void GameStarter()
+    {
+        SceneManager.LoadScene("MainScene");
+    }
+
+
+    public void CreditsOpener()
+    {
+        creditsMenu.SetActive(true);
+    }
    
+
+    public void CreditsCloser()
+    {
+        creditsMenu.SetActive(false);
+    }
+
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
+
 
     void Update()
     {     

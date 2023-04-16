@@ -72,7 +72,7 @@ public class Player : MonoBehaviour
                     Instantiate(playerSettings.muzzlePrefab, muzzleTransform);
                     bul.GetComponent<Rigidbody2D>().AddForce(Vector2.right * playerSettings.bulletSpeed, ForceMode2D.Force);
                     timer = 0f;
-                    CinemachineShakeEffect.Instance.ShakeCamera(0.5f, .1f);
+                    CinemachineShakeEffect.Instance.ShakeCamera(0.75f, .1f);
                 }               
             }
         }                     
@@ -112,7 +112,7 @@ public class Player : MonoBehaviour
             onStab();
             var tempHealth = collision.GetComponent<Zombie>().zombieHealth; // fikir, stabbing ile kýrýlabilir obstaclelar ve zýplanmasý gereken obstaclelar.
             collision.GetComponent<Zombie>().zombieHealth = tempHealth;
-            CinemachineShakeEffect.Instance.ShakeCamera(0.7f, .08f);
+            CinemachineShakeEffect.Instance.ShakeCamera(1f, 0.2f);
         }
         if (collision.GetComponent<Zombie>() && !isGrounded) // zýplama
         {
@@ -122,7 +122,7 @@ public class Player : MonoBehaviour
             var tempHealth = collision.GetComponent<Zombie>().zombieHealth;
             collision.GetComponent<Zombie>().zombieHealth = tempHealth;
             stabbing = false;
-            CinemachineShakeEffect.Instance.ShakeCamera(1f, .08f);
+            CinemachineShakeEffect.Instance.ShakeCamera(1f, 0.25f);
         }
     }
 
@@ -133,7 +133,7 @@ public class Player : MonoBehaviour
         {
             stabbing = true;
             onSwish();
-            CinemachineShakeEffect.Instance.ShakeCamera(0.2f, .08f);
+            CinemachineShakeEffect.Instance.ShakeCamera(0.5f, .1f);
             StartCoroutine("StabTimer");
             StartCoroutine(ColliderTimer());
         }       

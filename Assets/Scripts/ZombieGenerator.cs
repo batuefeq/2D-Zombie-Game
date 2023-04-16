@@ -12,7 +12,8 @@ public class ZombieGenerator : MonoBehaviour
     public delegate void OnZombieDeath();
     public static event OnZombieDeath CallUIFunction;
     public GameObject dieBody;
-
+    public GameObject soundObject;
+    private GameObject _soundObject;
 
     void ZombieSpawner()
     {
@@ -48,38 +49,51 @@ public class ZombieGenerator : MonoBehaviour
         int temp = Random.Range(0, 2);
         if (temp == 1)
         {
-            body.transform.rotation = Quaternion.Euler(0, 0, 90);
-            body.transform.position = new Vector3(body.transform.position.x, -6.1f, body.transform.position.z);
+            body.transform.SetPositionAndRotation(new Vector3(body.transform.position.x, -6.1f, body.transform.position.z), Quaternion.Euler(0, 0, 90));
             StartCoroutine(BodyFade(body));
-            print("inside 2");
         }
         else
         {
-            body.transform.rotation = Quaternion.Euler(0, 0, 270);
-            body.transform.position = new Vector3(body.transform.position.x, -5.89f, body.transform.position.z);
+            body.transform.SetPositionAndRotation(new Vector3(body.transform.position.x, -5.89f, body.transform.position.z), Quaternion.Euler(0, 0, 270));
             StartCoroutine(BodyFade(body));
-            print("inside 1");
         }               
     }
 
 
     private IEnumerator BodyFade(GameObject tempBody)
     {
-        print("inside");
-        var tempvalue = 255f;
+        SpriteRenderer renderer = tempBody.GetComponent<SpriteRenderer>();
+        Color tempColor = renderer.material.color;
+        var tempvalue = 1f;
         while (tempvalue > 0)
         {
-            print("inside while");
-            tempvalue -= 1f;
-            Color tempColor = new Color(0, 0, 0, tempvalue);
-            tempBody.GetComponent<SpriteRenderer>().color = tempColor;
-            print(tempBody.GetComponent<SpriteRenderer>().color);
-            tempBody.transform.SetPositionAndRotation(transform.position, transform.rotation);
+            tempvalue -= 0.01f;
+            tempColor.a = tempvalue;
+            renderer.material.color = tempColor;
             yield return null;
         }
 
         yield return new WaitForSeconds(0.1f);
         Destroy(tempBody);
+    }
+
+
+    private void ZombieFollower()
+    {
+        if (zombie != null)
+        {
+            if (_soundObject == null)
+            {
+                _soundObject = Instantiate(soundObject, zombie.gameObject.transform);
+                _soundObject.transform.parent = gameObject.transform;
+            }
+
+            _soundObject.transform.SetPositionAndRotation(zombie.gameObject.transform.position, zombie.transform.rotation);
+        }
+        else
+        {
+            Destroy(_soundObject, 0.5f);
+        }
     }
 
 
@@ -100,5 +114,6 @@ public class ZombieGenerator : MonoBehaviour
             Debug.Log("Loading a Zombie");
         }
         SpawnerTimer();
+        ZombieFollower();
     }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class ZombieSound : MonoBehaviour
 {
@@ -34,10 +35,10 @@ public class ZombieSound : MonoBehaviour
     private void NewMethod()
     {
         int random = Random.Range(0, 2);
-        AudioSource.PlayClipAtPoint(hsClip, gameObject.transform.position, 1f);
+        audioSource.PlayOneShot(hsClip);
         if (random == 1)
         {
-            AudioSource.PlayClipAtPoint((zombieClip[Random.Range(0, 2)]), gameObject.transform.position);
+            audioSource.PlayOneShot(zombieClip[Random.Range(0, 2)]);
         }
         
     }
@@ -48,9 +49,9 @@ public class ZombieSound : MonoBehaviour
         int random = Random.Range(0, 2);
         if (random == 1)
         {
-            AudioSource.PlayClipAtPoint((zombieClip[Random.Range(0, 2)]), gameObject.transform.position);
+            audioSource.PlayOneShot(zombieClip[Random.Range(0, 2)]);
         }
         audioSource.volume = 0.6f;
-        AudioSource.PlayClipAtPoint((bodyClip[Random.Range(0, 2)]), gameObject.transform.position);
+        audioSource.PlayOneShot(bodyClip[Random.Range(0, 2)]);
     }
 }
