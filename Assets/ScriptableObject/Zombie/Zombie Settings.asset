@@ -15,5 +15,5 @@ MonoBehaviour:
   health: 50
   maxSpeed: 50
   minSpeed: 0.2
-  incrementSpeed: 0.009
+  incrementSpeed: 1
   bulletImpactSpeed: 1

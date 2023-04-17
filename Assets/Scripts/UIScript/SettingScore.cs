@@ -4,13 +4,14 @@ using UnityEngine.UI;
 
 public class SettingScore : MonoBehaviour
 {
-    Text scoreText;
+    private Text scoreText;
     public static int score;
 
     private void Start()
     {
         scoreText = GetComponent<Text>();
     }
+
 
     private void OnEnable()
     {

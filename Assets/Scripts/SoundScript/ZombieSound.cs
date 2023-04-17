@@ -30,7 +30,7 @@ public class ZombieSound : MonoBehaviour
 
     private void HsClip()
     {
-        audioSource.volume = 0.4f;
+        audioSource.volume = 0.2f;
         NewMethod();
     }
 
@@ -50,7 +50,7 @@ public class ZombieSound : MonoBehaviour
     {
         if (Zombie.isPlayerContact == true && temp == 0)
         {
-            audioSource.volume = 0.5f;
+            audioSource.volume = 0.3f;
             audioSource.PlayOneShot(finishClip);
             temp++;
         }
@@ -73,7 +73,7 @@ public class ZombieSound : MonoBehaviour
         {
             audioSource.PlayOneShot(zombieClip[Random.Range(0, 2)]);
         }
-        audioSource.volume = 0.4f;
+        audioSource.volume = 0.12f;
         audioSource.PlayOneShot(bodyClip[Random.Range(0, 2)]);
     }
 }

@@ -75,7 +75,7 @@ public class Zombie : MonoBehaviour
             }
             else if (currentSpeed < zombieSettings.maxSpeed)
             {
-                currentSpeed += zombieSettings.incrementSpeed;
+                currentSpeed += zombieSettings.incrementSpeed * Time.deltaTime;
             }
         }           
     }
@@ -117,6 +117,5 @@ public class Zombie : MonoBehaviour
         Die();
         ZombieMovement();
         SpeedAdjuster();
-        print(currentSpeed);
     }
 }

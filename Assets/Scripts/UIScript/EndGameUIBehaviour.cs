@@ -21,8 +21,8 @@ public class EndGameUIBehaviour : MonoBehaviour
         endGameUI.SetActive(false);
         cg = endGameUI.GetComponent<CanvasGroup>();
         text = endGameUI.transform.GetChild(0).GetChild(1).GetComponent<Text>();
-        text.text = PlayerPrefs.GetInt("HighScore").ToString();
-        cg.alpha = 0;  
+        cg.alpha = 0;
+        highScore = PlayerPrefs.GetInt("HighScore");
     }
 
 
@@ -56,6 +56,7 @@ public class EndGameUIBehaviour : MonoBehaviour
 
     private void HighScoreSetter()
     {
+        
         if (SettingScore.score > highScore)
         {
             highScore = SettingScore.score;
