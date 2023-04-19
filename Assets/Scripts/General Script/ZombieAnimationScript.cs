@@ -10,7 +10,7 @@ public class ZombieAnimationScript : MonoBehaviour
     private static float animSpeed = 0.3f;
     private float minAnimSpeed = 0.3f;
     private float maxAnimSpeed = 2.5f;
-    private readonly float animSpeedRate = 0.0007f;
+    private readonly float animSpeedRate = 0.11f;
 
 
     private void Awake()
@@ -36,7 +36,7 @@ public class ZombieAnimationScript : MonoBehaviour
     {
         if (animSpeed < maxAnimSpeed)
         {
-            animSpeed += animSpeedRate;
+            animSpeed += animSpeedRate * Time.deltaTime;
         }
         else if (animSpeed >= maxAnimSpeed)
         {

@@ -50,12 +50,12 @@ public class Player : MonoBehaviour
     {
         if(!EndGameUIBehaviour.gamePaused)
         {
-            Jump();
             Shot();
             Stabbing();
+            Jump();
         }    
     }
-
+  
 
     private void Shot()
     {
@@ -135,25 +135,31 @@ public class Player : MonoBehaviour
             onSwish();
             CinemachineShakeEffect.Instance.ShakeCamera(0.5f, .1f);
             StartCoroutine("StabTimer");
-            StartCoroutine(ColliderTimer());
+            if (isGrounded)
+            {
+                StartCoroutine(GroundKnifeColliderTimer());
+            }
+            else if (!isGrounded)
+            {
+                StartCoroutine(AirColliderTimer());
+            }
+            
         }       
     }
     
 
-    IEnumerator ColliderTimer()
+    private IEnumerator GroundKnifeColliderTimer()
     {
-        if (isGrounded)
-        {
-            stabCollider.enabled = true;
-            yield return new WaitForSeconds(playerSettings.stabTime);
-            stabCollider.enabled = false;
-        }
-        else if (!isGrounded)
-        {
-            stabBottomCollider.enabled = true;
-            yield return new WaitForSeconds(playerSettings.airStabTime);
-            stabBottomCollider.enabled = false;
-        }       
+        stabCollider.enabled = true;
+        yield return new WaitForSeconds(playerSettings.stabTime);
+        stabCollider.enabled = false;
+    }
+
+    private IEnumerator AirColliderTimer()
+    {        
+        stabBottomCollider.enabled = true;
+        yield return new WaitForSeconds(playerSettings.airStabTime);
+        stabBottomCollider.enabled = false;           
     }
 
    

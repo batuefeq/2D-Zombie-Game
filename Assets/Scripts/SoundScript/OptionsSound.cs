@@ -1,7 +1,7 @@
 using UnityEngine;
-using System.Collections;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+
 
 public class OptionsSound : MonoBehaviour
 {
@@ -24,27 +24,7 @@ public class OptionsSound : MonoBehaviour
         PlayerPrefs.SetFloat("UIVolume", ui);
         PlayerPrefs.Save();
 
-        SaveTextShower();
-    }
-
-
-    private void SaveTextShower()
-    {
         text.gameObject.SetActive(true);
-        if (text.color.a < 5)
-        {
-            text.CrossFadeAlpha(255, 0.0001f, true);
-        }
-        text.CrossFadeAlpha(0, 1.5f, true);
-        StartCoroutine(AlphaSetter());
-    }
-
-
-    private IEnumerator AlphaSetter()
-    {
-        print("inside");
-        yield return new WaitForSeconds(1f);
-        text.gameObject.SetActive(false);
     }
 
 

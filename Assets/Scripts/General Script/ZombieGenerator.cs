@@ -25,12 +25,12 @@ public class ZombieGenerator : MonoBehaviour
     {
         try
         {
-            if (zombie.zombieDead)
+            if (zombie.zombieDead) // called once
             {
                 CallUIFunction();
                 zombie.zombieDead = false;
                 Invoke("ZombieSpawner", Random.Range(0.5f, 2f));
-                DieRoutuine();
+                DieRoutine();
                 Destroy(zombie.gameObject);
             }
         }
@@ -42,7 +42,7 @@ public class ZombieGenerator : MonoBehaviour
     }
 
 
-    private void DieRoutuine()
+    private void DieRoutine()
     {
         GameObject body = Instantiate(dieBody, zombie.gameObject.transform);
         body.transform.parent = gameObject.transform;
@@ -67,13 +67,13 @@ public class ZombieGenerator : MonoBehaviour
         var tempvalue = 1f;
         while (tempvalue > 0)
         {
-            tempvalue -= 0.01f;
+            tempvalue -= 2f * Time.deltaTime;
             tempColor.a = tempvalue;
             renderer.material.color = tempColor;
             yield return null;
         }
 
-        yield return new WaitForSeconds(0.01f);
+        yield return null;
         Destroy(tempBody);
     }
 

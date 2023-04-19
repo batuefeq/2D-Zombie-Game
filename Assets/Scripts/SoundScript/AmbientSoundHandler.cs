@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class AmbientSoundHandler : MonoBehaviour
@@ -7,12 +8,14 @@ public class AmbientSoundHandler : MonoBehaviour
     [SerializeField]
     AudioClip[] clips;
     private static AmbientSoundHandler ambient;
-   
-    void Start()
+
+    
+
+    private void Awake()
     {
         auSource = GetComponent<AudioSource>();
         DontDestroyOnLoad(this);
-        if (ambient == null)
+        if (ambient == null) 
         {
             ambient = this;
         }
@@ -32,9 +35,16 @@ public class AmbientSoundHandler : MonoBehaviour
     }
 
 
-
     void Update()
     {
+        if (SceneManager.GetActiveScene().name == "MainScene")
+        {
+            return;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
         MusicEndHandler();
     }
 }

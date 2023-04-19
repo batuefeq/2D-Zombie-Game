@@ -23,6 +23,21 @@ public class SettingScore : MonoBehaviour
         ZombieGenerator.CallUIFunction -= SettingText;
     }
 
+    private void Update()
+    {
+        AdminMode();
+    }
+
+
+    private void AdminMode()
+    {
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            score += 1000;
+            scoreText.text = score.ToString();
+        }
+    }
+
     private void SettingText()
     {
          score += 20;

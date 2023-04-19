@@ -11,7 +11,7 @@ public class EndGameUIBehaviour : MonoBehaviour
     public static bool gamePaused;
     private int highScore;
     private Text text;
-   
+    public GameObject newScoreText;
 
 
 
@@ -26,14 +26,7 @@ public class EndGameUIBehaviour : MonoBehaviour
     }
 
 
-    IEnumerator Prolonger()
-    {      
-        yield return new WaitForSeconds(0.36f);
-        AlphaSetter();
-    }
-
-
-    void AlphaSetter()
+    private void AlphaSetter()
     {       
         if(cg.alpha < 1)
         {
@@ -49,7 +42,7 @@ public class EndGameUIBehaviour : MonoBehaviour
             endGameUI.SetActive(true);
             gamePaused = true;
             HighScoreSetter();
-            StartCoroutine(Prolonger());
+            AlphaSetter();
         }
     }
 
@@ -59,6 +52,8 @@ public class EndGameUIBehaviour : MonoBehaviour
         
         if (SettingScore.score > highScore)
         {
+            print("new high score");
+            newScoreText.SetActive(true);
             highScore = SettingScore.score;
             PlayerPrefs.SetInt("HighScore", highScore);
             text.text = SettingScore.score.ToString();
@@ -66,7 +61,7 @@ public class EndGameUIBehaviour : MonoBehaviour
         } 
         else if (SettingScore.score <= highScore)
         {
-            text.text = PlayerPrefs.GetInt("HighScore").ToString();
+            text.text = PlayerPrefs.GetInt("HighScore").ToString();          
         }
     }
 
@@ -104,6 +99,12 @@ public class EndGameUIBehaviour : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+    }
+
+
+    public void ReturnMainMenu()
+    {
+        SceneManager.LoadScene("StartScene");
     }
 
 

@@ -105,10 +105,10 @@ public class Zombie : MonoBehaviour
         currentSpeed = zombieSettings.minSpeed;
     }
 
+    
     void Start()
     {
-        _health = zombieSettings.health;  
-        
+        _health = zombieSettings.health;          
     }
 
 
