@@ -11,8 +11,7 @@ public class ZombieGenerator : MonoBehaviour
 
     public delegate void OnZombieDeath();
     public static event OnZombieDeath CallUIFunction;
-    public GameObject dieBody;
-    public GameObject soundObject;
+    public GameObject soundObject, bloodParticle, groundBloodParticle, dieBody;
     private GameObject _soundObject;
 
     void ZombieSpawner()
@@ -40,6 +39,23 @@ public class ZombieGenerator : MonoBehaviour
         }
              
     }
+
+
+    private void BloodSplatter()
+    {
+        var particle = Instantiate(bloodParticle, zombie.gameObject.transform);
+        particle.transform.parent = null;
+        Destroy(particle, 1.1f);
+    }
+
+
+    private void BloodGroundSplatter()
+    {
+        var particle = Instantiate(bloodParticle, zombie.gameObject.transform);
+        particle.transform.parent = null;
+        Destroy(particle, 1.1f);
+    }
+
 
 
     private void DieRoutine()
@@ -100,9 +116,18 @@ public class ZombieGenerator : MonoBehaviour
     private void Awake()
     {
         zombie = GetComponentInChildren<Zombie>();
+        Player.onJumpKill += BloodSplatter;
+        Player.onStab += BloodGroundSplatter;
     }
 
-    
+
+    private void OnDisable()
+    {
+        Player.onJumpKill -= BloodSplatter;
+        Player.onStab -= BloodGroundSplatter;
+    }
+
+
     void Update()
     {
         try

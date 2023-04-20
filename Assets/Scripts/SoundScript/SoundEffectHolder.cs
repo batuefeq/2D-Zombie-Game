@@ -8,7 +8,7 @@ public class SoundEffectHolder : MonoBehaviour
     private Slider slider;
     public AudioMixer mixer;
 
-    void Awake()
+    void Start()
     {
         slider = GetComponent<Slider>();
         mixer.GetFloat("SoundEffectParam", out float value);

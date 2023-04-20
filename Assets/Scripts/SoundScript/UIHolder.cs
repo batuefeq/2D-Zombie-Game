@@ -8,7 +8,7 @@ public class UIHolder : MonoBehaviour
     private Slider slider;
     public AudioMixer mixer;
 
-    void Awake()
+    void Start()
     {
         slider = GetComponent<Slider>();
         mixer.GetFloat("UIParam", out float value);

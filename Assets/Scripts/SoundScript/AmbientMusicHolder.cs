@@ -8,7 +8,7 @@ public class AmbientMusicHolder : MonoBehaviour
     private Slider slider;
     public AudioMixer mixer;
 
-    void Awake()
+    private void Start()
     {
         slider = GetComponent<Slider>();
         mixer.GetFloat("AmbientParam", out float value);

@@ -39,7 +39,7 @@ public class AmbientSoundHandler : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "MainScene")
         {
-            return;
+            
         }
         else
         {

@@ -8,7 +8,7 @@ public class MasterVolumeHolder : MonoBehaviour
     private Slider slider;
     public AudioMixer mixer;
 
-    void Awake()
+    void Start()
     {
         slider = GetComponent<Slider>();
         mixer.GetFloat("MasterParam", out float value);
