@@ -79,11 +79,17 @@ public class EndGameUIBehaviour : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
-        else
-        {           
+        else if (SceneManager.GetActiveScene().name == "StartScene")
+        {
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
         }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+        }
+        
     }
 
 
@@ -105,6 +111,8 @@ public class EndGameUIBehaviour : MonoBehaviour
     public void ReturnMainMenu()
     {
         SceneManager.LoadScene("StartScene");
+        gamePaused = false;
+        Zombie.isPlayerContact = false;
     }
 
 

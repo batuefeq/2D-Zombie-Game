@@ -72,7 +72,7 @@ public class Player : MonoBehaviour
                     Instantiate(playerSettings.muzzlePrefab, muzzleTransform);
                     bul.GetComponent<Rigidbody2D>().AddForce(Vector2.right * playerSettings.bulletSpeed, ForceMode2D.Force);
                     timer = 0f;
-                    CinemachineShakeEffect.Instance.ShakeCamera(0.75f, .1f);
+                    CinemachineShakeEffect.Instance.ShakeCamera(0.9f, .1f);
                 }               
             }
         }                     
@@ -112,7 +112,7 @@ public class Player : MonoBehaviour
             onStab();
             var tempHealth = collision.GetComponent<Zombie>().zombieHealth; // fikir, stabbing ile kýrýlabilir obstaclelar ve zýplanmasý gereken obstaclelar.
             collision.GetComponent<Zombie>().zombieHealth = tempHealth;
-            CinemachineShakeEffect.Instance.ShakeCamera(1f, 0.2f);
+            CinemachineShakeEffect.Instance.ShakeCamera(1.5f, 0.25f);
         }
         if (collision.GetComponent<Zombie>() && !isGrounded) // zýplama
         {

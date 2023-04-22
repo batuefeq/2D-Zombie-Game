@@ -56,7 +56,7 @@ public class Zombie : MonoBehaviour
         {
             zombieDead = true;
             gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
-            gameObject.GetComponent<CircleCollider2D>().enabled = false;
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
         }
     }
 
@@ -64,7 +64,7 @@ public class Zombie : MonoBehaviour
     private void SpeedAdjuster()
     {
         if (!zombieDead && !EndGameUIBehaviour.gamePaused)
-        {
+        {            
             if (currentSpeed >= zombieSettings.maxSpeed)
             {
                 currentSpeed = zombieSettings.maxSpeed;
@@ -77,6 +77,7 @@ public class Zombie : MonoBehaviour
             {
                 currentSpeed += zombieSettings.incrementSpeed * Time.deltaTime;
             }
+            print(zombieSettings.maxSpeed);
         }           
     }
 
@@ -108,7 +109,7 @@ public class Zombie : MonoBehaviour
     
     void Start()
     {
-        _health = zombieSettings.health;          
+        _health = zombieSettings.health;
     }
 
 

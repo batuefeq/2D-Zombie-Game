@@ -48,6 +48,9 @@ TagManager:
   - name: CloseRangeBehind
     uniqueID: 3443410905
     locked: 0
+  - name: Bushes
+    uniqueID: 432897863
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

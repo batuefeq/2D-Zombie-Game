@@ -72,7 +72,6 @@ public class Menu : MonoBehaviour
     }
 
 
-
     void Update()
     {     
         GamePauser();

@@ -47,12 +47,12 @@ MonoBehaviour:
   m_ComponentVersion: 1
   m_LightType: 1
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 1
+  m_FalloffIntensity: 0.71
   m_Color: {r: 1, g: 0, b: 0.80319357, a: 1}
   m_Intensity: 0.7
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 0000000091f3e0ebd9473ecd
+  m_ApplyToSortingLayers: 0000000091f3e0eb477fcd19
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -336,12 +336,12 @@ MonoBehaviour:
   m_ComponentVersion: 1
   m_LightType: 1
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 1
+  m_FalloffIntensity: 0.71
   m_Color: {r: 1, g: 0, b: 0.8533139, a: 1}
   m_Intensity: 0.7
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 0000000091f3e0ebd9473ecd
+  m_ApplyToSortingLayers: 0000000091f3e0eb477fcd19
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -580,7 +580,7 @@ GameObject:
   - component: {fileID: 4286951766876233145}
   - component: {fileID: 4286951766876233144}
   - component: {fileID: 7264428876317503399}
-  - component: {fileID: 3234093355178298475}
+  - component: {fileID: 1465151861342766573}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Untagged
@@ -640,8 +640,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.14, y: -0.27973694}
-  m_Size: {x: 2.16, y: 2.8}
+  m_Offset: {x: 0.14000003, y: -0.36203647}
+  m_Size: {x: 2.1600003, y: 2.6354008}
   m_Direction: 0
 --- !u!114 &7264428876317503399
 MonoBehaviour:
@@ -657,8 +657,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zombieSettings: {fileID: 11400000, guid: 1b4b3c435c7890242a1e69ae7b3ad78f, type: 2}
   zombieDead: 0
---- !u!58 &3234093355178298475
-CircleCollider2D:
+--- !u!61 &1465151861342766573
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -670,9 +670,19 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.1, y: 1.31}
+  m_Offset: {x: 0.019365072, y: 1.2344942}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.48409802
+  m_Size: {x: 1.1742806, y: 0.71921295}
+  m_EdgeRadius: 0
 --- !u!1 &7315742280562602591
 GameObject:
   m_ObjectHideFlags: 0

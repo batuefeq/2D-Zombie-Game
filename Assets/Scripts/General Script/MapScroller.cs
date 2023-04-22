@@ -5,14 +5,15 @@ using UnityEngine;
 
 public class MapScroller : MonoBehaviour
 {
-    float firstLayerSpeed, secondLayerSpeed;
+    float firstLayerSpeed, secondLayerSpeed, thirdLayerSpeed;
     [SerializeField]
-    private GameObject firstLayer, secondLayer;
+    private GameObject firstLayer, secondLayer, thirdLayer;
 
     void Awake()
     {
         firstLayerSpeed = 2f;
         secondLayerSpeed = 1f;
+        thirdLayerSpeed = 0.5f;
     }
 
    
@@ -28,11 +29,17 @@ public class MapScroller : MonoBehaviour
     }
    
 
+    private void ThirdLayerMovement()
+    {
+        thirdLayer.transform.Translate(thirdLayerSpeed * Time.deltaTime * Vector2.left);
+    }
+
 
     private void MapPositionReset()
     {
         FirstLayerMover();
         SecondLayerMover();
+        ThirdLayerMovement();
 
         if (firstLayer.transform.position.x <= -32)
         {
@@ -42,12 +49,15 @@ public class MapScroller : MonoBehaviour
         {
             secondLayer.transform.position = new Vector2(0, secondLayer.transform.position.y);
         }
+        if (thirdLayer.transform.position.x <= -32)
+        {
+            thirdLayer.transform.position = new Vector2(0, secondLayer.transform.position.y);
+        }
     }
 
 
     void Update()
-    {
-        
+    {       
         MapPositionReset();
     }
 }

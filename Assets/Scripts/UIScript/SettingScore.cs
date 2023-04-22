@@ -25,18 +25,18 @@ public class SettingScore : MonoBehaviour
 
     private void Update()
     {
-        AdminMode();
+        //AdminMode();
     }
 
 
-    private void AdminMode()
-    {
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            score += 1000;
-            scoreText.text = score.ToString();
-        }
-    }
+   //private void AdminMode()
+   //{
+   //    if (Input.GetKeyDown(KeyCode.J))
+   //    {
+   //        score += 1000;
+   //        scoreText.text = score.ToString();
+   //    }
+   //}
 
     private void SettingText()
     {

@@ -8,6 +8,14 @@ public class ToggleHandler : MonoBehaviour
     private void Awake()
     {
         toggle = GetComponent<Toggle>();
+        if (GameModeManager.madMode)
+        {
+            toggle.isOn = true;
+        }
+        else
+        {
+            toggle.isOn = false;
+        }
     }
 
 

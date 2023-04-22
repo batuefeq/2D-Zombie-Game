@@ -28,7 +28,7 @@ public class Bullet : MonoBehaviour
     {
         if(collision.gameObject.GetComponent<Zombie>())
         {
-            if(collision.collider.GetType() == typeof(CircleCollider2D)) // headshot
+            if(collision.collider.GetType() == typeof(BoxCollider2D)) // headshot
             {
                 ZombieHeadImpact?.Invoke();
                 var hsBlod = Instantiate(hsBloodPrefab, transform);
