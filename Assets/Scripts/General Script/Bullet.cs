@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
     public delegate void ZombieHit();
     public static event ZombieHit ZombieImpact, ZombieHeadImpact;
     public int bulletDmg = 5;
-
+    
 
     private void Awake()
     {
@@ -30,20 +30,35 @@ public class Bullet : MonoBehaviour
         {
             if(collision.collider.GetType() == typeof(BoxCollider2D)) // headshot
             {
-                ZombieHeadImpact?.Invoke();
-                var hsBlod = Instantiate(hsBloodPrefab, transform);
+                BulletHeadCaller();
                 collision.gameObject.GetComponent<Zombie>().zombieHealth = GetComponentInParent<Player>().baseDamage * 2;
-                hsBlod.transform.parent = null;             
             }
             else //other shots.
             {
-                ZombieImpact?.Invoke();
-                var blod = Instantiate(bloodPrefab, transform);
-                collision.gameObject.GetComponent<Zombie>().zombieHealth = GetComponentInParent<Player>().baseDamage;
-                blod.transform.parent = null;             
+                BulletBodyCaller();
+                collision.gameObject.GetComponent<Zombie>().zombieHealth = GetComponentInParent<Player>().baseDamage;                         
             }                     
             collision.gameObject.GetComponent<Zombie>().ZombiePusher();
             Destroy(gameObject);
         }
     }
+
+
+    private void BulletHeadCaller()
+    {
+        ZombieHeadImpact?.Invoke();
+        var hsBlod = Instantiate(hsBloodPrefab, transform);
+        GameManager.ultimatePoints += 10;
+        hsBlod.transform.parent = null;
+    }
+
+
+    private void BulletBodyCaller()
+    {
+        ZombieImpact?.Invoke();
+        var blod = Instantiate(bloodPrefab, transform);
+        GameManager.ultimatePoints += 5;
+        blod.transform.parent = null;
+    }
+
 }

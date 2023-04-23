@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
 {
     public ZombieSettings zSettings;
     private bool done = false;
+    public static int ultimatePoints = 0;
 
     private void Start()
     {
@@ -19,9 +20,7 @@ public class GameManager : MonoBehaviour
             {
                 return;
             }
-
         }
-
         if (SceneManager.GetActiveScene().name == "StartScene")
         {
             Cursor.lockState = CursorLockMode.Confined;
