@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 
 public class SettingScore : MonoBehaviour
 {
@@ -10,6 +10,7 @@ public class SettingScore : MonoBehaviour
     private void Start()
     {
         scoreText = GetComponent<Text>();
+        score = 0;
     }
 
 
@@ -37,6 +38,8 @@ public class SettingScore : MonoBehaviour
    //        scoreText.text = score.ToString();
    //    }
    //}
+
+
 
     private void SettingText()
     {
