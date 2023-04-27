@@ -43,7 +43,7 @@ public class Bullet : MonoBehaviour
         }
     }
 
-
+    
     private void BulletHeadCaller()
     {
         ZombieHeadImpact?.Invoke();
@@ -60,5 +60,4 @@ public class Bullet : MonoBehaviour
         GameManager.ultimatePoints += 5;
         blod.transform.parent = null;
     }
-
 }

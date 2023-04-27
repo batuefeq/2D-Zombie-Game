@@ -13,4 +13,5 @@ public class PlayerSettings : ScriptableObject
     public float stabTime;
     public float airStabTime;
     public float stabRate;
+    public int maxUltimatePoint;
 }

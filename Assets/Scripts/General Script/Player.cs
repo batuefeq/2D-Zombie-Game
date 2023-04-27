@@ -1,5 +1,5 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
 
 public class Player : MonoBehaviour
@@ -14,13 +14,14 @@ public class Player : MonoBehaviour
 
 
     public BoxCollider2D stabCollider, stabBottomCollider;
-   
+
     float timer = 0f;
 
     Transform muzzleTransform;
     public bool isGrounded;
     public bool stabbing;
-    
+    public static bool inUltimate = false;
+
 
     int _damage;
     public int baseDamage
@@ -42,20 +43,21 @@ public class Player : MonoBehaviour
         muzzleTransform = gameObject.transform.GetChild(1);
         stabCollider = GetComponentInChildren<BoxCollider2D>();
         shooting = GetComponent<Shooting>();
-        stabBottomCollider = gameObject.transform.GetChild(3).GetComponent<BoxCollider2D>();;
+        stabBottomCollider = gameObject.transform.GetChild(3).GetComponent<BoxCollider2D>(); ;
     }
 
 
     void Update()
     {
-        if(!EndGameUIBehaviour.gamePaused)
+        if (!EndGameUIBehaviour.gamePaused)
         {
             Shot();
             Stabbing();
             Jump();
-        }    
+            UltimateChecker();
+        }
     }
-  
+
 
     private void Shot()
     {
@@ -64,7 +66,7 @@ public class Player : MonoBehaviour
         if (timer >= nextTimeToFire)
         {
             if (Input.GetMouseButtonDown(0))
-            {               
+            {
                 if (!shooting.isReloading)
                 {
                     onShoot?.Invoke();
@@ -73,12 +75,12 @@ public class Player : MonoBehaviour
                     bul.GetComponent<Rigidbody2D>().AddForce(Vector2.right * playerSettings.bulletSpeed, ForceMode2D.Force);
                     timer = 0f;
                     CinemachineShakeEffect.Instance.ShakeCamera(0.9f, .1f);
-                }               
+                }
             }
-        }                     
+        }
     }
 
-   
+
     private void Jump()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -101,7 +103,7 @@ public class Player : MonoBehaviour
             {
                 isGrounded = true;
             }
-        }       
+        }
     } // ground check
 
 
@@ -128,7 +130,7 @@ public class Player : MonoBehaviour
 
 
     private void Stabbing()
-    {      
+    {
         if (Input.GetMouseButtonDown(1) && !stabbing)
         {
             stabbing = true;
@@ -143,10 +145,44 @@ public class Player : MonoBehaviour
             {
                 StartCoroutine(AirColliderTimer());
             }
-            
-        }       
+
+        }
     }
-    
+
+
+    private void UltimateChecker()
+    {
+        if (GameManager.ultimatePoints == playerSettings.maxUltimatePoint)
+        {
+            UseUltimate();
+        }
+        if (inUltimate)
+        {
+            baseDamage = 200;
+        }
+        else
+        {
+            baseDamage = 0;
+        }
+    }
+
+
+    private void UseUltimate()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            StartCoroutine("UltimateMode");         
+        }
+    }
+
+
+    private IEnumerator UltimateMode()
+    {
+        inUltimate = true;
+        yield return new WaitForSeconds(10f);
+        inUltimate = false; 
+    }
+
 
     private IEnumerator GroundKnifeColliderTimer()
     {
@@ -155,16 +191,17 @@ public class Player : MonoBehaviour
         stabCollider.enabled = false;
     }
 
+
     private IEnumerator AirColliderTimer()
-    {        
+    {
         stabBottomCollider.enabled = true;
         yield return new WaitForSeconds(playerSettings.airStabTime);
-        stabBottomCollider.enabled = false;           
+        stabBottomCollider.enabled = false;
     }
 
-   
+
     IEnumerator StabTimer()
-    {   
+    {
         yield return new WaitForSeconds(playerSettings.stabRate);
         stabbing = false;
     }
