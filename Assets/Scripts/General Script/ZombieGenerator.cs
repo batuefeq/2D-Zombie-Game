@@ -8,6 +8,8 @@ public class ZombieGenerator : MonoBehaviour
 {
     public GameObject[] zombiePrefabs;
     public Zombie zombie;
+    public Player player;
+    public ParticleSystem particle;
 
     public delegate void OnZombieDeath();
     public static event OnZombieDeath CallUIFunction;
@@ -103,8 +105,9 @@ public class ZombieGenerator : MonoBehaviour
                 _soundObject = Instantiate(soundObject, zombie.gameObject.transform);
                 _soundObject.transform.parent = gameObject.transform;
             }
-
+          
             _soundObject.transform.SetPositionAndRotation(zombie.gameObject.transform.position, zombie.transform.rotation);
+            ParticlePositionSetter();
         }
         else
         {
@@ -113,11 +116,34 @@ public class ZombieGenerator : MonoBehaviour
     }
 
 
+    private void ParticlePositionSetter()
+    {
+        var shape = particle.shape;
+        shape.position = new Vector3(zombie.gameObject.transform.position.x + Mathf.Abs(player.transform.position.x), 0, player.gameObject.transform.position.z);
+    }
+
+
+    public void UltimatePointCollector(int value)
+    {
+        if (!Player.inUltimate)
+        {
+            var count = particle.emission.GetBurst(0);
+            count.count = new ParticleSystem.MinMaxCurve(value);
+            particle.emission.SetBurst(0, count);
+            particle.Play();
+            GameManager.ultimatePoints += value;
+        }      
+    }
+
+
+
+
     private void Awake()
     {
         zombie = GetComponentInChildren<Zombie>();
         Player.onJumpKill += BloodSplatter;
         Player.onStab += BloodGroundSplatter;
+        Bullet.ImpactCheck += UltimatePointCollector;
     }
 
 
@@ -125,6 +151,7 @@ public class ZombieGenerator : MonoBehaviour
     {
         Player.onJumpKill -= BloodSplatter;
         Player.onStab -= BloodGroundSplatter;
+        Bullet.ImpactCheck -= UltimatePointCollector;
     }
 
 

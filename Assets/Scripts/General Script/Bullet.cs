@@ -5,10 +5,15 @@ public class Bullet : MonoBehaviour
 {
     public GameObject bloodPrefab;
     public GameObject hsBloodPrefab;
+    public ParticleSystem particle;
     public delegate void ZombieHit();
+    public delegate void ZombieHitUltimateChecker(int value);
     public static event ZombieHit ZombieImpact, ZombieHeadImpact;
+    public static event ZombieHitUltimateChecker ImpactCheck;
     public int bulletDmg = 5;
-    
+
+    private int bodyPoints = 5;
+    private int headPoints = 10;
 
     private void Awake()
     {
@@ -43,21 +48,22 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    
+
+
     private void BulletHeadCaller()
     {
         ZombieHeadImpact?.Invoke();
+        ImpactCheck?.Invoke(headPoints);
         var hsBlod = Instantiate(hsBloodPrefab, transform);
-        GameManager.ultimatePoints += 10;
         hsBlod.transform.parent = null;
     }
 
 
     private void BulletBodyCaller()
     {
+        ImpactCheck?.Invoke(bodyPoints);
         ZombieImpact?.Invoke();
         var blod = Instantiate(bloodPrefab, transform);
-        GameManager.ultimatePoints += 5;
         blod.transform.parent = null;
     }
 }
