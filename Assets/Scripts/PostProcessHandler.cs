@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -8,54 +7,49 @@ public class PostProcessHandler : MonoBehaviour
 {
     public VolumeProfile profile;
     private Vignette vignette;
-    private ClampedFloatParameter param;
+    private ChromaticAberration aberration;
+    private float vignetteIntensityNum = 0f;
+    private float aberrationIntensityNum = 0f;
+    private float timer = 0f;
 
-    void Awake()
+
+    private void Start()
     {
-        param = vignette.intensity;
-        // profile = GetComponent<VolumeProfile>();    
+        timer = 0f;
     }
 
 
     private void EffectMaster()
     {
+        profile.TryGet(out vignette);
+        profile.TryGet(out aberration);
+        aberration.intensity.value = aberrationIntensityNum;
+        vignette.intensity.value = vignetteIntensityNum;                        
+    }
+
+
+    private void IntensitySetter()
+    {    
         if (Player.inUltimate)
         {
-            if (profile.TryGet<Vignette>(out vignette))
-            {
-                StartCoroutine("EffectStarter");
-            }
+            timer += Time.deltaTime;
         }
-    }
-
-
-    private void NumberSetter()
-    {       
-         param.Interp(0f, 2f, 2);        
-    }
-
-
-    private IEnumerator EffectStarter()
-    {
-        while (Player.inUltimate)
+        else
         {
-            profile.TryGet(out vignette);
-            vignette.intensity = param;
-            yield return null;
+            timer -= Time.deltaTime;
         }
-
-
-        vignette.intensity.value = 0f;
-        print("inside");
-        yield return new WaitForSeconds(0.1f);
-        print("outside");
-        
+        if (timer < 0)
+        {
+            timer = 0;
+        }
+        vignetteIntensityNum = Mathf.Lerp(0, 0.55f, timer);
+        aberrationIntensityNum = Mathf.Lerp(0, 0.25f, timer);
     }
 
-    
+
     void Update()
     {
         EffectMaster();
-        NumberSetter();
+        IntensitySetter();
     }
 }
