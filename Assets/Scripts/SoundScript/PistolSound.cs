@@ -14,6 +14,10 @@ public class PistolSound : MonoBehaviour
     private AudioClip[] swishClip;
     [SerializeField]
     private AudioClip jumpClip;
+    [SerializeField]
+    private AudioClip ultimateSound;
+    [SerializeField]
+    private AudioClip ultimateSoundFinish;
 
 
     private void Awake()
@@ -25,7 +29,7 @@ public class PistolSound : MonoBehaviour
         Player.onJump += JumpSound;
         Shooting.onReload += ReloadSound;
     }
-    
+
 
     private void OnDisable()
     {
@@ -43,7 +47,14 @@ public class PistolSound : MonoBehaviour
         audioSource.PlayOneShot(swishClip[Random.Range(0, 2)]);
     }
 
-    
+
+    public void UltimateSound()
+    {
+        audioSource.PlayOneShot(ultimateSound);
+        audioSource.PlayOneShot(ultimateSoundFinish);
+    }
+
+
     void ShootSound()
     {
         audioSource.volume = 0.2f;
@@ -79,11 +90,11 @@ public class PistolSound : MonoBehaviour
     }
 
 
-   
+
 
     private void Update()
     {
-        
+
         if (EndGameUIBehaviour.gamePaused)
         {
             audioSource.Pause();
@@ -91,7 +102,7 @@ public class PistolSound : MonoBehaviour
         else
         {
             audioSource.UnPause();
-        }       
+        }
     }
 
 }

@@ -12,8 +12,8 @@ public class Bullet : MonoBehaviour
     public static event ZombieHitUltimateChecker ImpactCheck;
     public int bulletDmg = 5;
 
-    private int bodyPoints = 5;
-    private int headPoints = 10;
+    private int bodyPoints = 3;
+    private int headPoints = 7;
 
     private void Awake()
     {

@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 
     public PlayerSettings playerSettings;
     Shooting shooting;
+    PistolSound pistolSound;
 
     public delegate void OnShoot();
     public static event OnShoot onShoot, onStab, onSwish, onJump, onJumpKill;
@@ -40,6 +41,7 @@ public class Player : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        pistolSound = GetComponent<PistolSound>();
         muzzleTransform = gameObject.transform.GetChild(1);
         stabCollider = GetComponentInChildren<BoxCollider2D>();
         shooting = GetComponent<Shooting>();
@@ -103,7 +105,7 @@ public class Player : MonoBehaviour
             {
                 isGrounded = true;
             }
-        }
+        }  
     } // ground check
 
 
@@ -171,6 +173,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
+            pistolSound.UltimateSound();
             StartCoroutine("UltimateMode");         
         }
     }

@@ -33,6 +33,10 @@ public class PostProcessHandler : MonoBehaviour
         if (Player.inUltimate)
         {
             timer += Time.deltaTime;
+            if (timer >= 1f)
+            {
+                timer = 1f;
+            }
         }
         else
         {
@@ -42,6 +46,7 @@ public class PostProcessHandler : MonoBehaviour
         {
             timer = 0;
         }
+        print(timer);
         vignetteIntensityNum = Mathf.Lerp(0, 0.55f, timer);
         aberrationIntensityNum = Mathf.Lerp(0, 0.25f, timer);
     }

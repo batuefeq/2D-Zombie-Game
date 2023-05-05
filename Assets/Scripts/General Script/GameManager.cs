@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public ZombieSettings zSettings;
     public PlayerSettings playerSettings;
     private bool done = false;
+    private bool isStartScene;
     public static int ultimatePoints = 0;
     
 
@@ -32,9 +33,13 @@ public class GameManager : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
+            isStartScene = true;
+        }
+        else
+        {
+            isStartScene = false;
         }
     }
-
 
     private void UltimateSetter()
     {
@@ -47,6 +52,7 @@ public class GameManager : MonoBehaviour
             ultimatePoints = 0;
         }
     }
+
 
     private void Update()
     {

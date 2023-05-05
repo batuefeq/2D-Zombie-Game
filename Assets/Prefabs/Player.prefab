@@ -134,7 +134,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9c22eea25e7875348832fdeeff708cd1, type: 3}
   - {fileID: 8300000, guid: 811d36b4845c63a42a32f3e13ab3a5d9, type: 3}
   jumpClip: {fileID: 8300000, guid: d0d663351f9997044ac09017a47d1e8b, type: 3}
-  finishClip: {fileID: 8300000, guid: 6087580b08bfd624aa1ba8e3c996eeb1, type: 3}
+  ultimateSound: {fileID: 8300000, guid: fcf2c7e73a3a74643ac97e1ac7254596, type: 3}
+  ultimateSoundFinish: {fileID: 8300000, guid: e46baba00c081794897ed60ff18cfed2, type: 3}
 --- !u!82 &8420446300575666088
 AudioSource:
   m_ObjectHideFlags: 0
